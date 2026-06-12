@@ -3,581 +3,376 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>JT Carpentry WA · Architectural Joinery, Perth</title>
-<meta name="description" content="Custom carpentry and architectural joinery for homes across Perth and the western suburbs.">
+<title>JT Carpentry WA · The Work Library</title>
+<meta name="description" content="Custom carpentry and architectural joinery for homes across Perth. Browse the work library.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&family=Roboto+Condensed:wght@400;500;700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700;900&family=Roboto+Mono:wght@400;500&display=swap" rel="stylesheet">
 <style>
   :root{
-    --bg:#F8F6F2;
-    --sand:#E8E0D6;
-    --linen:#F2EEE8;
-    --stone:#D7D1C8;
-    --oak:#C7A883;
-    --charcoal:#383633;
-    --sage:#B9B8AA;
-    --text:#262626;
-    --serif:'Roboto',system-ui,sans-serif;
+    --sand:#CABF9F;
+    --sand-d:#BBB08E;
+    --panel:#FFFFFF;
+    --ink:#211F1B;
+    --muted:#8C887E;
+    --line:#ECE7DC;
+    --ink-btn:#34302B;
+    --olive:#97976A;
+    --olive-d:#82825A;
+    --chip:#F5F2EA;
     --sans:'Roboto',system-ui,sans-serif;
-    --cond:'Roboto Condensed',system-ui,sans-serif;
-    --pad:clamp(24px,6vw,120px);
+    --mono:'Roboto Mono',ui-monospace,monospace;
   }
-
   *{margin:0;padding:0;box-sizing:border-box}
   html{scroll-behavior:smooth}
   body{
-    background:var(--bg);
-    color:var(--text);
+    background:var(--sand);
+    color:var(--ink);
     font-family:var(--sans);
-    font-weight:300;
-    line-height:1.7;
+    font-weight:400;line-height:1.6;
     -webkit-font-smoothing:antialiased;
-    overflow-x:hidden;
+    padding:clamp(14px,2.4vw,34px);
   }
-  img{display:block;max-width:100%}
-  a{color:inherit;text-decoration:none}
+  .wrap{max-width:1240px;margin:0 auto}
 
-  /* ---------- type ---------- */
-  h1,h2,h3{font-family:var(--serif);font-weight:700;line-height:1.1;letter-spacing:-.01em}
-  .eyebrow{
-    font-family:var(--cond);
-    font-size:.74rem;text-transform:uppercase;letter-spacing:.28em;
-    font-weight:500;color:var(--charcoal);opacity:.7;
+  .panel{
+    background:var(--panel);
+    border-radius:26px;
+    box-shadow:0 26px 60px -34px rgba(43,38,28,.5);
+    padding:clamp(22px,3vw,40px);
   }
-  .lede{font-family:var(--serif);font-size:clamp(1.3rem,2.4vw,1.9rem);font-weight:400;line-height:1.5;color:var(--charcoal)}
-  p{max-width:54ch}
+  .panel + .panel{margin-top:clamp(18px,2.4vw,32px)}
 
-  /* ---------- placeholder image panels ---------- */
-  /* Swap any data-photo URL for JT's real project photography. */
-  .ph{position:relative;background-color:var(--stone);background-size:cover;background-position:center;overflow:hidden}
-  .ph.tone-sand{background-color:var(--sand)}
-  .ph.tone-linen{background-color:var(--linen)}
-  .ph.tone-oak{background-color:var(--oak)}
-  .ph.tone-sage{background-color:var(--sage)}
-  .ph::after{
-    content:"";position:absolute;inset:0;pointer-events:none;opacity:.5;
-    background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.06'/%3E%3C/svg%3E");
-  }
-
-  /* ---------- nav ---------- */
-  header{
-    position:fixed;top:0;left:0;right:0;z-index:50;
-    display:flex;align-items:center;justify-content:space-between;
-    padding:26px var(--pad);
-    transition:background .6s ease,padding .6s ease,box-shadow .6s ease;
-  }
-  header.scrolled{background:var(--linen);padding:18px var(--pad);box-shadow:0 1px 0 rgba(56,54,51,.08)}
-  .brand{font-family:var(--serif);font-weight:700;font-size:1.3rem;letter-spacing:.01em;color:#fff;transition:color .6s ease}
-  .brand small{display:block;font-family:var(--cond);font-size:.58rem;letter-spacing:.3em;text-transform:uppercase;font-weight:500;opacity:.8;margin-top:3px}
-  header.scrolled .brand{color:var(--charcoal)}
-  nav{display:flex;gap:38px;align-items:center}
-  nav a{font-family:var(--cond);font-size:.82rem;font-weight:500;letter-spacing:.14em;text-transform:uppercase;color:#fff;opacity:.92;transition:color .6s ease,opacity .3s ease}
-  nav a:hover{opacity:.6}
-  header.scrolled nav a{color:var(--charcoal)}
-  .menu-btn{display:none;background:none;border:0;font-family:var(--cond);font-size:.82rem;font-weight:500;letter-spacing:.16em;text-transform:uppercase;color:#fff;cursor:pointer;transition:color .6s ease}
-  header.scrolled .menu-btn{color:var(--charcoal)}
-
-  .drawer{
-    position:fixed;inset:0;z-index:60;background:var(--linen);
-    display:flex;flex-direction:column;align-items:center;justify-content:center;gap:30px;
-    opacity:0;visibility:hidden;transition:opacity .5s ease;
-  }
-  .drawer.open{opacity:1;visibility:visible}
-  .drawer a{font-family:var(--serif);font-weight:700;font-size:1.7rem;color:var(--charcoal)}
-  .drawer .close{position:absolute;top:24px;right:var(--pad);font-family:var(--cond);font-size:.82rem;font-weight:500;letter-spacing:.16em;text-transform:uppercase;cursor:pointer}
-
-  /* ---------- hero ---------- */
-  .hero{position:relative;height:100vh;min-height:620px;display:flex;align-items:flex-end}
-  .hero .ph{position:absolute;inset:0}
-  .hero::before{content:"";position:absolute;inset:0;z-index:1;
-    background:linear-gradient(to top,rgba(38,38,38,.55),rgba(38,38,38,.04) 48%,rgba(38,38,38,.10))}
-  .hero-inner{position:relative;z-index:2;padding:0 var(--pad) clamp(48px,9vh,110px);color:#fff;max-width:760px}
-  .hero h1{font-size:clamp(2.8rem,6.6vw,5.6rem);color:#fff}
-  .hero p{color:rgba(255,255,255,.9);font-size:1rem;margin-top:22px;max-width:42ch}
+  /* ---------- top bar ---------- */
+  .bar{display:flex;align-items:center;justify-content:space-between;gap:18px;flex-wrap:wrap}
+  .lhs{display:flex;align-items:center;gap:clamp(20px,3vw,44px)}
+  .logo{font-weight:700;font-size:1.05rem;letter-spacing:.42em;padding-left:.42em}
+  .logo b{font-weight:700}
+  .logo span{display:block;font-family:var(--mono);font-size:.56rem;letter-spacing:.24em;color:var(--muted);margin-top:3px;padding-left:.04em}
+  .links{display:flex;gap:26px}
+  .links a{font-size:.9rem;color:var(--ink);opacity:.78;transition:opacity .2s}
+  .links a:hover{opacity:1}
+  .actions{display:flex;gap:12px}
   .btn{
-    display:inline-block;margin-top:34px;font-size:.74rem;letter-spacing:.2em;text-transform:uppercase;
-    padding:13px 26px;border:1px solid rgba(255,255,255,.7);color:#fff;
-    transition:background .4s ease,color .4s ease,border-color .4s ease;
+    display:inline-flex;align-items:center;gap:9px;cursor:pointer;border:0;
+    font-family:var(--sans);font-size:.82rem;font-weight:500;
+    padding:12px 18px;border-radius:12px;transition:background .25s,transform .15s,box-shadow .25s;
+    text-decoration:none;white-space:nowrap;
   }
-  .btn:hover{background:#fff;color:var(--charcoal);border-color:#fff}
-  .btn-ink{border-color:rgba(56,54,51,.4);color:var(--charcoal)}
-  .btn-ink:hover{background:var(--charcoal);color:var(--bg);border-color:var(--charcoal)}
+  .btn svg{width:15px;height:15px;flex:none}
+  .btn-dark{background:var(--ink-btn);color:#F4EFE6}
+  .btn-dark:hover{background:#221F1B}
+  .btn-olive{background:var(--olive);color:#fff}
+  .btn-olive:hover{background:var(--olive-d)}
+  .btn:active{transform:translateY(1px)}
 
-  /* ---------- sections ---------- */
-  section{padding:clamp(80px,13vh,170px) var(--pad)}
-  .intro{max-width:760px}
-  .intro .eyebrow{margin-bottom:26px}
-  .intro h2{font-size:clamp(2rem,4.4vw,3.4rem);margin-bottom:0}
+  .rule{height:1px;background:var(--line);margin:clamp(20px,2.6vw,30px) 0 clamp(26px,3vw,40px)}
 
-  /* ---------- featured projects ---------- */
-  .work-head{display:flex;justify-content:space-between;align-items:flex-end;flex-wrap:wrap;gap:20px;margin-bottom:clamp(40px,7vh,90px)}
-  .work-head h2{font-size:clamp(2rem,4.4vw,3.4rem)}
-  .grid{display:grid;grid-template-columns:repeat(12,1fr);gap:clamp(28px,4vw,64px)}
-  .proj{cursor:pointer}
-  .proj .ph{aspect-ratio:4/5;transition:transform 1.2s cubic-bezier(.16,.6,.3,1)}
-  .proj:hover .ph{transform:scale(1.015)}
-  .proj.tall .ph{aspect-ratio:3/4.4}
-  .proj.wide .ph{aspect-ratio:7/5}
-  .cap{display:flex;flex-wrap:wrap;gap:6px 16px;margin-top:18px;align-items:baseline}
-  .cap .name{font-family:var(--serif);font-weight:700;font-size:1.3rem;line-height:1.15;flex-basis:100%}
-  .cap .meta{font-family:var(--cond);font-weight:400;font-size:.74rem;letter-spacing:.1em;text-transform:uppercase;opacity:.6}
+  /* ---------- hero grid ---------- */
+  .hero{display:grid;grid-template-columns:minmax(300px,38%) 1fr;gap:clamp(28px,4vw,56px);align-items:start}
 
-  .c-a{grid-column:1/7}
-  .c-b{grid-column:8/13;align-self:end}
-  .c-c{grid-column:1/5}
-  .c-d{grid-column:6/13}
-  .c-e{grid-column:1/8}
-  .c-f{grid-column:9/13;align-self:end}
+  .kicker{font-family:var(--mono);font-size:.72rem;letter-spacing:.2em;text-transform:uppercase;color:var(--muted);margin-bottom:20px}
+  .head{font-weight:700;font-size:clamp(2.8rem,6vw,4.7rem);line-height:.98;letter-spacing:-.025em}
+  .sub{color:var(--muted);font-size:.96rem;max-width:34ch;margin-top:20px}
+  .scrollcue{display:inline-flex;align-items:center;gap:8px;margin-top:22px;font-size:.85rem;font-weight:500}
+  .scrollcue span{font-family:var(--mono);color:var(--olive-d)}
 
-  /* ---------- services ---------- */
-  #services{background:var(--linen)}
-  .svc{display:grid;grid-template-columns:repeat(12,1fr);gap:clamp(28px,5vw,80px);align-items:center;margin-top:clamp(48px,8vh,110px)}
-  .svc:first-of-type{margin-top:clamp(40px,7vh,90px)}
-  .svc .ph{aspect-ratio:7/5}
-  .svc-img{grid-column:1/8}
-  .svc-txt{grid-column:9/13}
-  .svc.flip .svc-img{grid-column:6/13;order:2}
-  .svc.flip .svc-txt{grid-column:1/5;order:1}
-  .svc-num{font-family:var(--cond);font-weight:500;font-size:.8rem;letter-spacing:.16em;text-transform:uppercase;opacity:.55;margin-bottom:14px}
-  .svc h3{font-size:clamp(1.7rem,3vw,2.5rem);margin-bottom:16px}
-  .svc p{font-size:.96rem;color:#3a3835}
+  .navwrap{margin-top:clamp(32px,4.5vh,52px)}
+  .navlabel{display:flex;align-items:baseline;justify-content:space-between;gap:12px;margin-bottom:14px}
+  .navlabel .t{font-weight:500;font-size:1.02rem}
+  .navlabel .now{font-family:var(--mono);font-size:.72rem;color:var(--muted);letter-spacing:.04em;text-align:right}
+  .chips{display:flex;flex-wrap:wrap;gap:8px}
+  .chip{
+    width:46px;height:46px;border-radius:11px;border:1px solid var(--line);background:#fff;
+    font-family:var(--mono);font-size:.84rem;color:var(--ink);cursor:pointer;
+    display:flex;align-items:center;justify-content:center;transition:all .2s;
+  }
+  .chip:hover{border-color:var(--sand-d);background:var(--chip)}
+  .chip.on{background:var(--olive);border-color:var(--olive);color:#fff;width:auto;min-width:46px;padding:0 16px;font-weight:500;letter-spacing:.02em}
+  .chip .lbl{display:none}
+  .chip.on .lbl{display:inline;margin-left:8px;font-family:var(--sans);font-size:.82rem}
 
-  /* ---------- about ---------- */
-  #about{background:var(--sand)}
-  .about-grid{display:grid;grid-template-columns:repeat(12,1fr);gap:clamp(32px,5vw,80px);align-items:center}
-  .about-img{grid-column:1/6}
-  .about-img .ph{aspect-ratio:3/4}
-  .about-txt{grid-column:7/12}
-  .about-txt .eyebrow{margin-bottom:24px}
-  .about-txt h2{font-size:clamp(1.9rem,3.6vw,3rem);margin-bottom:28px}
-  .about-txt p{font-size:1rem;margin-bottom:20px;max-width:46ch;color:#34322f}
+  /* ---------- card rail ---------- */
+  .railwrap{position:relative;min-width:0}
+  .rail{
+    display:flex;gap:clamp(14px,1.6vw,20px);overflow-x:auto;overflow-y:hidden;
+    padding-bottom:14px;scroll-snap-type:x mandatory;
+    -webkit-overflow-scrolling:touch;scrollbar-width:none;
+  }
+  .rail::-webkit-scrollbar{display:none}
+  .card{
+    position:relative;flex:none;width:300px;height:430px;border-radius:18px;overflow:hidden;
+    scroll-snap-align:start;cursor:pointer;background:var(--stone,#c7ab83);
+    transition:transform .3s ease;
+  }
+  .card.feature{width:430px}
+  .card:hover{transform:translateY(-4px)}
+  .card .img{position:absolute;inset:0;background-size:cover;background-position:center}
+  /* faint sawn-timber fibre on tone cards */
+  .card .fibre{position:absolute;inset:0;
+    background:repeating-linear-gradient(90deg,rgba(0,0,0,.06) 0 1px,transparent 1px 4px),
+               repeating-linear-gradient(90deg,rgba(255,255,255,.05) 0 1px,transparent 1px 9px);
+    mix-blend-mode:overlay;opacity:.7}
+  .card .scrim{position:absolute;inset:0;background:linear-gradient(to top,rgba(20,16,10,.62),rgba(20,16,10,0) 52%)}
+  .pill{position:absolute;top:14px;left:14px;background:#fff;color:var(--ink);
+    font-family:var(--mono);font-size:.64rem;letter-spacing:.08em;text-transform:uppercase;
+    padding:6px 11px;border-radius:20px}
+  .num{position:absolute;top:14px;right:16px;font-family:var(--mono);font-size:.72rem;color:rgba(255,255,255,.85)}
+  .meta{position:absolute;left:18px;right:18px;bottom:18px;color:#fff}
+  .meta h3{font-weight:700;font-size:1.18rem;line-height:1.15;letter-spacing:-.01em}
+  .meta p{font-family:var(--mono);font-size:.66rem;letter-spacing:.06em;text-transform:uppercase;opacity:.82;margin-top:8px}
 
-  /* ---------- process ---------- */
-  .proc-head{max-width:600px;margin-bottom:clamp(40px,7vh,80px)}
-  .proc-head h2{font-size:clamp(1.9rem,3.6vw,3rem)}
-  .proc{display:grid;grid-template-columns:repeat(5,1fr);gap:0}
-  .step{padding:34px 28px 34px 0;border-top:1px solid rgba(56,54,51,.18)}
-  .step .n{font-family:var(--cond);font-weight:500;font-size:.95rem;letter-spacing:.06em;opacity:.5;margin-bottom:18px}
-  .step h3{font-size:1.55rem;margin-bottom:12px}
-  .step p{font-size:.86rem;opacity:.72;max-width:24ch}
+  /* ---------- studio + commission ---------- */
+  .split{display:grid;grid-template-columns:1.05fr 1fr;gap:clamp(32px,5vw,72px);align-items:start}
+  .studio .kicker{margin-bottom:18px}
+  .studio h2{font-weight:700;font-size:clamp(1.7rem,3vw,2.4rem);letter-spacing:-.02em;line-height:1.08;margin-bottom:20px}
+  .studio p{color:#46423b;max-width:46ch;margin-bottom:16px;font-size:.98rem}
+  .tags{display:flex;flex-wrap:wrap;gap:8px;margin-top:26px}
+  .tag{font-family:var(--mono);font-size:.7rem;letter-spacing:.04em;text-transform:uppercase;
+    background:var(--chip);color:#5a564d;padding:8px 13px;border-radius:9px}
 
-  /* ---------- testimonials ---------- */
-  #voices{background:var(--linen);text-align:center}
-  .quotes{max-width:880px;margin:0 auto;display:flex;flex-direction:column;gap:clamp(56px,9vh,110px)}
-  .quote blockquote{font-family:var(--serif);font-weight:700;font-size:clamp(1.5rem,3.2vw,2.5rem);line-height:1.28;letter-spacing:-.01em;color:var(--charcoal)}
-  .quote cite{display:block;margin-top:24px;font-family:var(--cond);font-size:.78rem;letter-spacing:.16em;text-transform:uppercase;font-style:normal;font-weight:500;opacity:.6}
-
-  /* ---------- journal ---------- */
-  .journal-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:clamp(28px,4vw,56px);margin-top:clamp(40px,7vh,80px)}
-  .post .ph{aspect-ratio:5/6;transition:transform 1.2s cubic-bezier(.16,.6,.3,1)}
-  .post{cursor:pointer}
-  .post:hover .ph{transform:scale(1.015)}
-  .post .date{font-family:var(--cond);font-weight:500;font-size:.74rem;letter-spacing:.12em;text-transform:uppercase;opacity:.55;margin-top:18px}
-  .post h3{font-size:1.5rem;margin-top:8px;line-height:1.18}
-
-  /* ---------- contact ---------- */
-  #contact{background:var(--sand)}
-  .contact-grid{display:grid;grid-template-columns:repeat(12,1fr);gap:clamp(36px,5vw,90px);align-items:center}
-  .contact-img{grid-column:1/6}
-  .contact-img .ph{aspect-ratio:4/5}
-  .contact-form{grid-column:7/13}
-  .contact-form .eyebrow{margin-bottom:22px}
-  .contact-form h2{font-size:clamp(1.9rem,3.6vw,3rem);margin-bottom:14px}
-  .contact-form .sub{font-size:.96rem;opacity:.74;margin-bottom:38px;max-width:40ch}
-  .field{margin-bottom:26px}
-  .field label{display:block;font-family:var(--cond);font-weight:500;font-size:.72rem;letter-spacing:.14em;text-transform:uppercase;opacity:.6;margin-bottom:10px}
+  .commission{background:var(--chip);border-radius:18px;padding:clamp(24px,3vw,34px)}
+  .commission .kicker{margin-bottom:14px}
+  .commission h2{font-weight:700;font-size:clamp(1.4rem,2.4vw,1.9rem);letter-spacing:-.02em;margin-bottom:8px}
+  .commission .lead{color:var(--muted);font-size:.92rem;margin-bottom:26px;max-width:36ch}
+  .field{margin-bottom:18px}
+  .field label{display:block;font-family:var(--mono);font-size:.64rem;letter-spacing:.1em;text-transform:uppercase;color:var(--muted);margin-bottom:8px}
   .field input,.field select,.field textarea{
-    width:100%;background:transparent;border:0;border-bottom:1px solid rgba(56,54,51,.28);
-    font-family:var(--sans);font-size:1rem;font-weight:300;color:var(--text);padding:8px 0;
+    width:100%;background:#fff;border:1px solid var(--line);border-radius:11px;
+    font-family:var(--sans);font-size:.94rem;color:var(--ink);padding:12px 14px;
   }
-  .field input:focus,.field select:focus,.field textarea:focus{outline:none;border-color:var(--charcoal)}
-  .field textarea{resize:vertical;min-height:80px}
-  .form-row{display:grid;grid-template-columns:1fr 1fr;gap:26px}
-  .sent{font-family:var(--serif);font-weight:500;font-size:1.15rem;color:var(--charcoal);opacity:0;height:0;transition:opacity .5s ease;margin-top:10px}
+  .field input:focus,.field select:focus,.field textarea:focus{outline:none;border-color:var(--olive)}
+  .field textarea{resize:vertical;min-height:74px}
+  .frow{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+  .sent{font-size:.92rem;color:var(--olive-d);font-weight:500;opacity:0;height:0;transition:opacity .4s;margin-top:6px}
   .sent.show{opacity:1;height:auto}
 
   /* ---------- footer ---------- */
-  footer{background:var(--charcoal);color:var(--bg);padding:clamp(60px,9vh,110px) var(--pad) 44px}
-  .foot-top{display:flex;justify-content:space-between;flex-wrap:wrap;gap:40px;align-items:flex-start}
-  .foot-brand{font-family:var(--serif);font-weight:700;font-size:2rem;line-height:1.1}
-  .foot-brand small{display:block;font-family:var(--cond);font-size:.66rem;letter-spacing:.22em;text-transform:uppercase;font-weight:500;opacity:.6;margin-top:10px}
-  .foot-nav{display:flex;gap:50px;flex-wrap:wrap}
-  .foot-col span{display:block;font-family:var(--cond);font-weight:500;font-size:.72rem;letter-spacing:.16em;text-transform:uppercase;opacity:.5;margin-bottom:16px}
-  .foot-col a,.foot-col p{display:block;font-size:.92rem;opacity:.85;margin-bottom:10px;max-width:30ch}
-  .foot-bottom{margin-top:clamp(50px,8vh,90px);padding-top:26px;border-top:1px solid rgba(248,246,242,.14);display:flex;justify-content:space-between;flex-wrap:wrap;gap:14px;font-size:.72rem;letter-spacing:.08em;opacity:.55}
-
-  /* ---------- reveal animation ---------- */
-  .reveal{opacity:0;transform:translateY(26px);transition:opacity 1.1s ease,transform 1.1s cubic-bezier(.16,.6,.3,1)}
-  .reveal.in{opacity:1;transform:none}
-
-  @media (prefers-reduced-motion:reduce){
-    .reveal{opacity:1;transform:none;transition:none}
-    .proj .ph,.post .ph{transition:none}
-    html{scroll-behavior:auto}
-  }
+  .foot{display:flex;justify-content:space-between;flex-wrap:wrap;gap:12px;
+    margin-top:clamp(26px,4vw,40px);padding-top:22px;border-top:1px solid var(--line);
+    font-family:var(--mono);font-size:.7rem;letter-spacing:.06em;color:var(--muted)}
+  .foot a{color:var(--muted)}
+  .foot a:hover{color:var(--ink)}
 
   /* ---------- responsive ---------- */
-  @media(max-width:920px){
-    nav{display:none}
-    .menu-btn{display:block}
-    .grid,.svc,.about-grid,.contact-grid{grid-template-columns:1fr;gap:36px}
-    .c-a,.c-b,.c-c,.c-d,.c-e,.c-f,
-    .svc-img,.svc-txt,.svc.flip .svc-img,.svc.flip .svc-txt,
-    .about-img,.about-txt,.contact-img,.contact-form{grid-column:1/-1;order:0}
-    .svc.flip .svc-img{order:0}
-    .proj .ph,.proj.tall .ph,.proj.wide .ph{aspect-ratio:4/5}
-    .proc{grid-template-columns:1fr}
-    .step{padding:26px 0}
-    .journal-grid{grid-template-columns:1fr}
+  @media(max-width:900px){
+    .hero{grid-template-columns:1fr;gap:30px}
+    .split{grid-template-columns:1fr;gap:28px}
+    .links{display:none}
+    .head{font-size:clamp(2.6rem,11vw,3.6rem)}
+    .card{width:260px;height:380px}
+    .card.feature{width:300px}
   }
-  @media(max-width:560px){
-    .form-row{grid-template-columns:1fr}
-    .foot-top{flex-direction:column}
+  @media(max-width:520px){
+    .bar{gap:14px}
+    .actions{width:100%}
+    .btn{flex:1;justify-content:center}
+    .frow{grid-template-columns:1fr}
   }
+  @media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}.card,.btn{transition:none}}
 </style>
 </head>
 <body>
+<div class="wrap">
 
-<header id="hdr">
-  <a href="#top" class="brand">JT Carpentry<small>Western Australia</small></a>
-  <nav>
-    <a href="#work">Projects</a>
-    <a href="#services">Services</a>
-    <a href="#about">About</a>
-    <a href="#journal">Journal</a>
-    <a href="#contact">Contact</a>
-  </nav>
-  <button class="menu-btn" id="menuBtn">Menu</button>
-</header>
+  <!-- ===================== HERO PANEL ===================== -->
+  <section class="panel">
+    <div class="bar">
+      <div class="lhs">
+        <a class="logo" href="#"><b>JT</b><span>CARPENTRY · WA</span></a>
+        <div class="links">
+          <a href="#work">Work</a>
+          <a href="#studio">Studio</a>
+          <a href="#commission">Commission</a>
+        </div>
+      </div>
+      <div class="actions">
+        <a class="btn btn-dark" href="#commission">Start a project
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="9"/><path d="M9 12h6M13 9l3 3-3 3"/></svg>
+        </a>
+        <a class="btn btn-olive" href="#commission">Book a consult
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="5" width="18" height="16" rx="2"/><path d="M3 9h18M8 3v4M16 3v4"/></svg>
+        </a>
+      </div>
+    </div>
 
-<div class="drawer" id="drawer">
-  <span class="close" id="closeBtn">Close</span>
-  <a href="#work" data-close>Projects</a>
-  <a href="#services" data-close>Services</a>
-  <a href="#about" data-close>About</a>
-  <a href="#journal" data-close>Journal</a>
-  <a href="#contact" data-close>Contact</a>
+    <div class="rule"></div>
+
+    <div class="hero" id="work">
+      <!-- left column -->
+      <div>
+        <div class="kicker">JT Carpentry WA · Selected work</div>
+        <h1 class="head">Built to<br>be lived in.</h1>
+        <p class="sub">Custom carpentry and architectural joinery for homes across Perth and the western suburbs.</p>
+        <div class="scrollcue">Scroll right to browse the library <span>&raquo;</span></div>
+
+        <div class="navwrap">
+          <div class="navlabel">
+            <div class="t">The work library</div>
+            <div class="now" id="now">01 / Fluted Oak Kitchen</div>
+          </div>
+          <div class="chips" id="chips"></div>
+        </div>
+      </div>
+
+      <!-- right column: scrolling rail -->
+      <div class="railwrap">
+        <div class="rail" id="rail">
+
+          <article class="card feature" data-name="Fluted Oak Kitchen">
+            <div class="img" style="background-image:url('hero.jpg')"></div>
+            <div class="scrim"></div>
+            <div class="pill">Kitchen</div><div class="num">01</div>
+            <div class="meta"><h3>Fluted Oak Kitchen</h3><p>Dalkeith · 2026 · American Oak</p></div>
+          </article>
+
+          <article class="card" data-name="Living Room Media Wall" style="--stone:#c7ab83">
+            <div class="fibre"></div><div class="scrim"></div>
+            <div class="pill">Media wall</div><div class="num">02</div>
+            <div class="meta"><h3>Living Room Media Wall</h3><p>City Beach · 2025 · American Oak</p></div>
+          </article>
+
+          <article class="card" data-name="Walk-in Wardrobe" style="--stone:#c1a06f">
+            <div class="fibre"></div><div class="scrim"></div>
+            <div class="pill">Wardrobe</div><div class="num">03</div>
+            <div class="meta"><h3>Walk-in Wardrobe</h3><p>Cottesloe · 2026 · Oak &amp; Brass</p></div>
+          </article>
+
+          <article class="card" data-name="Curved Island Joinery" style="--stone:#7d4631">
+            <div class="fibre"></div><div class="scrim"></div>
+            <div class="pill">Joinery</div><div class="num">04</div>
+            <div class="meta"><h3>Curved Island Joinery</h3><p>Mosman Park · 2026 · Jarrah</p></div>
+          </article>
+
+          <article class="card" data-name="Panelled Entry" style="--stone:#d6ccba">
+            <div class="fibre"></div><div class="scrim"></div>
+            <div class="pill">Panelling</div><div class="num">05</div>
+            <div class="meta"><h3>Panelled Entry</h3><p>Peppermint Grove · 2025 · Limed Oak</p></div>
+          </article>
+
+          <article class="card" data-name="Spotted Gum Deck" style="--stone:#b18450">
+            <div class="fibre"></div><div class="scrim"></div>
+            <div class="pill">Decking</div><div class="num">06</div>
+            <div class="meta"><h3>Spotted Gum Deck</h3><p>Swanbourne · 2025 · Spotted Gum</p></div>
+          </article>
+
+          <article class="card" data-name="Pivot Entry Door" style="--stone:#6f3d2b">
+            <div class="fibre"></div><div class="scrim"></div>
+            <div class="pill">Doors</div><div class="num">07</div>
+            <div class="meta"><h3>Pivot Entry Door</h3><p>Nedlands · 2026 · Solid Jarrah</p></div>
+          </article>
+
+          <article class="card" data-name="Library Study" style="--stone:#bf9d68">
+            <div class="fibre"></div><div class="scrim"></div>
+            <div class="pill">Built-ins</div><div class="num">08</div>
+            <div class="meta"><h3>Library Study</h3><p>Claremont · 2025 · Marri</p></div>
+          </article>
+
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===================== STUDIO + COMMISSION ===================== -->
+  <section class="panel">
+    <div class="split">
+      <div class="studio" id="studio">
+        <div class="kicker">The studio</div>
+        <h2>We choose the timber first.</h2>
+        <p>JT Carpentry WA is a small Perth workshop. Each piece is measured, drawn and built by hand, then finished so the grain stays honest for decades.</p>
+        <p>We care about the things you stop noticing once you live with them. The way a drawer closes. The line where two timbers meet. The quiet that good joinery brings to a room.</p>
+        <div class="tags">
+          <span class="tag">Custom Joinery</span>
+          <span class="tag">Media Walls</span>
+          <span class="tag">Wardrobes</span>
+          <span class="tag">Wall Panelling</span>
+          <span class="tag">Built-in Storage</span>
+          <span class="tag">Decking</span>
+          <span class="tag">Custom Doors</span>
+        </div>
+      </div>
+
+      <div class="commission" id="commission">
+        <div class="kicker">Commission</div>
+        <h2>Tell us about your home.</h2>
+        <p class="lead">Share a little about the space and what you have in mind. We reply to every enquiry personally.</p>
+        <form id="enq" novalidate>
+          <div class="frow">
+            <div class="field"><label for="n">Name</label><input id="n" type="text" autocomplete="name"></div>
+            <div class="field"><label for="e">Email</label><input id="e" type="email" autocomplete="email"></div>
+          </div>
+          <div class="frow">
+            <div class="field"><label for="s">Suburb</label><input id="s" type="text"></div>
+            <div class="field"><label for="p">Project</label>
+              <select id="p">
+                <option>Kitchen</option><option>Joinery</option><option>Wardrobe</option>
+                <option>Media wall</option><option>Panelling</option><option>Decking</option>
+                <option>Doors</option><option>Something else</option>
+              </select>
+            </div>
+          </div>
+          <div class="field"><label for="m">A few words</label><textarea id="m" rows="2"></textarea></div>
+          <button type="submit" class="btn btn-olive">Send enquiry
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+          </button>
+          <p class="sent" id="sent">Thank you. We will be in touch shortly.</p>
+        </form>
+      </div>
+    </div>
+
+    <div class="foot">
+      <span>JT Carpentry WA · Perth, Western Australia</span>
+      <a href="mailto:studio@jtcarpentrywa.com.au">studio@jtcarpentrywa.com.au</a>
+    </div>
+  </section>
+
 </div>
 
-<!-- ===================== HERO ===================== -->
-<section class="hero" id="top">
-  <div class="ph tone-stone" data-photo style="background-image:url('hero.jpg')"></div>
-  <div class="hero-inner">
-    <h1>Spaces designed<br>to be lived in</h1>
-    <p>Custom carpentry and architectural joinery for homes across Perth.</p>
-    <a href="#work" class="btn">View Projects</a>
-  </div>
-</section>
-
-<!-- ===================== INTRO ===================== -->
-<section>
-  <div class="intro reveal">
-    <p class="eyebrow">JT Carpentry WA</p>
-    <h2 class="lede">A small Perth studio shaping timber into the parts of a home you live closest to. The kitchen you gather in. The wall you walk past each morning. The joinery that quietly holds a room together.</h2>
-  </div>
-</section>
-
-<!-- ===================== FEATURED PROJECTS ===================== -->
-<section id="work">
-  <div class="work-head reveal">
-    <h2>Selected work</h2>
-    <p class="eyebrow">Perth and the western suburbs</p>
-  </div>
-
-  <div class="grid">
-    <article class="proj c-a reveal">
-      <div class="ph tone-sand" data-photo style="background-image:url('https://images.unsplash.com/photo-1556909211-36987daf7b4d?w=1400&q=80')"></div>
-      <div class="cap">
-        <span class="name">Fluted Oak Kitchen</span>
-        <span class="meta">Dalkeith</span><span class="meta">2026</span><span class="meta">Oak / Stone</span>
-      </div>
-    </article>
-
-    <article class="proj tall c-b reveal">
-      <div class="ph tone-stone" data-photo style="background-image:url('https://images.unsplash.com/photo-1616594039964-ae9021a400a0?w=1200&q=80')"></div>
-      <div class="cap">
-        <span class="name">Living Room Media Wall</span>
-        <span class="meta">City Beach</span><span class="meta">2025</span><span class="meta">American Oak</span>
-      </div>
-    </article>
-
-    <article class="proj c-c reveal">
-      <div class="ph tone-linen" data-photo style="background-image:url('https://images.unsplash.com/photo-1615873968403-89e068629265?w=1200&q=80')"></div>
-      <div class="cap">
-        <span class="name">Panelled Entry</span>
-        <span class="meta">Peppermint Grove</span><span class="meta">2025</span><span class="meta">Limed Timber</span>
-      </div>
-    </article>
-
-    <article class="proj wide c-d reveal">
-      <div class="ph tone-sage" data-photo style="background-image:url('https://images.unsplash.com/photo-1556228453-efd6c1ff04f6?w=1500&q=80')"></div>
-      <div class="cap">
-        <span class="name">Curved Island Joinery</span>
-        <span class="meta">Mosman Park</span><span class="meta">2026</span><span class="meta">Oak / Marble</span>
-      </div>
-    </article>
-
-    <article class="proj wide c-e reveal">
-      <div class="ph tone-oak" data-photo style="background-image:url('https://images.unsplash.com/photo-1505691938895-1758d7feb511?w=1500&q=80')"></div>
-      <div class="cap">
-        <span class="name">Spotted Gum Deck</span>
-        <span class="meta">Swanbourne</span><span class="meta">2025</span><span class="meta">Spotted Gum</span>
-      </div>
-    </article>
-
-    <article class="proj tall c-f reveal">
-      <div class="ph tone-sand" data-photo style="background-image:url('https://images.unsplash.com/photo-1558997519-83ea9252edf8?w=1200&q=80')"></div>
-      <div class="cap">
-        <span class="name">Walk-in Wardrobe</span>
-        <span class="meta">Cottesloe</span><span class="meta">2026</span><span class="meta">Oak / Brass</span>
-      </div>
-    </article>
-  </div>
-</section>
-
-<!-- ===================== SERVICES ===================== -->
-<section id="services">
-  <div class="intro reveal">
-    <p class="eyebrow" style="margin-bottom:24px">What we make</p>
-    <h2 style="font-size:clamp(2rem,4.4vw,3.4rem)">Considered work,<br>built to last a lifetime.</h2>
-  </div>
-
-  <div class="svc reveal">
-    <div class="svc-img"><div class="ph tone-stone" data-photo style="background-image:url('https://images.unsplash.com/photo-1600585154526-990dced4db0d?w=1400&q=80')"></div></div>
-    <div class="svc-txt">
-      <div class="svc-num">i</div>
-      <h3>Custom Joinery</h3>
-      <p>Cabinetry drawn for a single room and built to fit it exactly. Honest timber, soft-close everything, and lines that sit quietly in the space.</p>
-    </div>
-  </div>
-
-  <div class="svc flip reveal">
-    <div class="svc-img"><div class="ph tone-sand" data-photo style="background-image:url('https://images.unsplash.com/photo-1616137422495-1e9e46e2aa77?w=1400&q=80')"></div></div>
-    <div class="svc-txt">
-      <div class="svc-num">ii</div>
-      <h3>Media Walls</h3>
-      <p>A warm centre for the living room. Concealed storage, integrated lighting and timber that frames the everyday without shouting about it.</p>
-    </div>
-  </div>
-
-  <div class="svc reveal">
-    <div class="svc-img"><div class="ph tone-linen" data-photo style="background-image:url('https://images.unsplash.com/photo-1618220179428-22790b461013?w=1400&q=80')"></div></div>
-    <div class="svc-txt">
-      <div class="svc-num">iii</div>
-      <h3>Wall Panelling</h3>
-      <p>Fluting, battening and limed finishes that give a flat wall texture and depth. Quiet detail you feel before you notice.</p>
-    </div>
-  </div>
-
-  <div class="svc flip reveal">
-    <div class="svc-img"><div class="ph tone-sage" data-photo style="background-image:url('https://images.unsplash.com/photo-1583847268964-b28dc8f51f92?w=1400&q=80')"></div></div>
-    <div class="svc-txt">
-      <div class="svc-num">iv</div>
-      <h3>Built-in Storage</h3>
-      <p>Storage shaped to the way you actually live. Hallway seats, study nooks and pantry joinery that make a small home feel generous.</p>
-    </div>
-  </div>
-
-  <div class="svc reveal">
-    <div class="svc-img"><div class="ph tone-oak" data-photo style="background-image:url('https://images.unsplash.com/photo-1600566753190-17f0baa2a6c3?w=1400&q=80')"></div></div>
-    <div class="svc-txt">
-      <div class="svc-num">v</div>
-      <h3>Decking</h3>
-      <p>Spotted gum and blackbutt verandahs built for Perth summers. Spaced, oiled and finished to weather slowly and beautifully.</p>
-    </div>
-  </div>
-
-  <div class="svc flip reveal">
-    <div class="svc-img"><div class="ph tone-stone" data-photo style="background-image:url('https://images.unsplash.com/photo-1600121848594-d8644e57abab?w=1400&q=80')"></div></div>
-    <div class="svc-txt">
-      <div class="svc-num">vi</div>
-      <h3>Architectural Timber</h3>
-      <p>Working alongside architects and designers to realise the timber elements that hold a building together, from screens to stairs to ceilings.</p>
-    </div>
-  </div>
-
-  <div class="svc reveal">
-    <div class="svc-img"><div class="ph tone-sand" data-photo style="background-image:url('https://images.unsplash.com/photo-1558997519-83ea9252edf8?w=1400&q=80')"></div></div>
-    <div class="svc-txt">
-      <div class="svc-num">vii</div>
-      <h3>Wardrobes</h3>
-      <p>Dressing rooms and walk-in robes with timber interiors, brass detailing and a place for everything. Made to be opened every day.</p>
-    </div>
-  </div>
-
-  <div class="svc flip reveal">
-    <div class="svc-img"><div class="ph tone-linen" data-photo style="background-image:url('https://images.unsplash.com/photo-1600210492486-724fe5c67fb0?w=1400&q=80')"></div></div>
-    <div class="svc-txt">
-      <div class="svc-num">viii</div>
-      <h3>Custom Doors</h3>
-      <p>Solid timber doors and pivot entries built to weight and hung to last. The first thing a home says, and the last thing you touch on the way out.</p>
-    </div>
-  </div>
-</section>
-
-<!-- ===================== ABOUT ===================== -->
-<section id="about">
-  <div class="about-grid">
-    <div class="about-img reveal">
-      <div class="ph tone-oak" data-photo style="background-image:url('https://images.unsplash.com/photo-1503387762-592deb58ef4e?w=1200&q=80')"></div>
-    </div>
-    <div class="about-txt reveal">
-      <p class="eyebrow">The studio</p>
-      <h2>Slow work, by choice.</h2>
-      <p>JT Carpentry WA is a small workshop working with timber across Perth and the western suburbs. Each piece is measured, drawn and built by hand, then finished so the grain stays honest for decades.</p>
-      <p>We care about the things you stop noticing once you live with them. The way a drawer closes. The line where two timbers meet. The quiet that good joinery brings to a room.</p>
-      <p>Most of our work comes by word of mouth, from homeowners, architects and builders who want it made properly the first time.</p>
-    </div>
-  </div>
-</section>
-
-<!-- ===================== PROCESS ===================== -->
-<section>
-  <div class="proc-head reveal">
-    <p class="eyebrow" style="margin-bottom:22px">How it works</p>
-    <h2>From first conversation to a home you settle into.</h2>
-  </div>
-  <div class="proc reveal">
-    <div class="step"><div class="n">01</div><h3>Consult</h3><p>We visit, listen and understand how you want to live in the space.</p></div>
-    <div class="step"><div class="n">02</div><h3>Design</h3><p>Drawings, timbers and finishes, refined until the detail feels right.</p></div>
-    <div class="step"><div class="n">03</div><h3>Craft</h3><p>Built by hand in the workshop, joint by joint, without shortcuts.</p></div>
-    <div class="step"><div class="n">04</div><h3>Install</h3><p>Fitted on site with care, scribed to your walls and floors.</p></div>
-    <div class="step"><div class="n">05</div><h3>Enjoy</h3><p>The part where it stops being work and becomes home.</p></div>
-  </div>
-</section>
-
-<!-- ===================== TESTIMONIALS ===================== -->
-<section id="voices">
-  <div class="quotes">
-    <div class="quote reveal">
-      <blockquote>It no longer feels like a house we bought. It feels like one that was made for us.</blockquote>
-      <cite>Homeowner, Dalkeith</cite>
-    </div>
-    <div class="quote reveal">
-      <blockquote>The detailing is the kind you only notice when it is missing everywhere else.</blockquote>
-      <cite>Architect, Cottesloe</cite>
-    </div>
-    <div class="quote reveal">
-      <blockquote>Years on, every join is still tight, and the timber has only grown warmer.</blockquote>
-      <cite>Homeowner, City Beach</cite>
-    </div>
-  </div>
-</section>
-
-<!-- ===================== JOURNAL ===================== -->
-<section id="journal">
-  <div class="work-head reveal">
-    <h2>Journal</h2>
-    <p class="eyebrow">Notes from the workshop</p>
-  </div>
-  <div class="journal-grid">
-    <article class="post reveal">
-      <div class="ph tone-sand" data-photo style="background-image:url('https://images.unsplash.com/photo-1604014237800-1c9102c219da?w=1100&q=80')"></div>
-      <p class="date">On Materials</p>
-      <h3>On the patience of timber</h3>
-    </article>
-    <article class="post reveal">
-      <div class="ph tone-stone" data-photo style="background-image:url('https://images.unsplash.com/photo-1600607687920-4e2a09cf159d?w=1100&q=80')"></div>
-      <p class="date">In the Workshop</p>
-      <h3>Why we lime our oak</h3>
-    </article>
-    <article class="post reveal">
-      <div class="ph tone-sage" data-photo style="background-image:url('https://images.unsplash.com/photo-1600210491892-03d54c0aaf87?w=1100&q=80')"></div>
-      <p class="date">At Home</p>
-      <h3>Choosing stone for a Perth kitchen</h3>
-    </article>
-  </div>
-</section>
-
-<!-- ===================== CONTACT ===================== -->
-<section id="contact">
-  <div class="contact-grid">
-    <div class="contact-img reveal">
-      <div class="ph tone-stone" data-photo style="background-image:url('https://images.unsplash.com/photo-1618221469555-7f3ad97540d6?w=1200&q=80')"></div>
-    </div>
-    <div class="contact-form reveal">
-      <p class="eyebrow">Enquiries</p>
-      <h2>Tell us about your home.</h2>
-      <p class="sub">Share a little about the space and what you have in mind. We reply to every enquiry personally.</p>
-
-      <form id="enq" novalidate>
-        <div class="form-row">
-          <div class="field"><label for="n">Name</label><input id="n" name="name" type="text" autocomplete="name"></div>
-          <div class="field"><label for="e">Email</label><input id="e" name="email" type="email" autocomplete="email"></div>
-        </div>
-        <div class="form-row">
-          <div class="field"><label for="s">Suburb</label><input id="s" name="suburb" type="text"></div>
-          <div class="field">
-            <label for="t">Project</label>
-            <select id="t" name="project">
-              <option>Custom Joinery</option>
-              <option>Media Wall</option>
-              <option>Wall Panelling</option>
-              <option>Built-in Storage</option>
-              <option>Decking</option>
-              <option>Wardrobe</option>
-              <option>Custom Doors</option>
-              <option>Something else</option>
-            </select>
-          </div>
-        </div>
-        <div class="field"><label for="m">A few words</label><textarea id="m" name="message" rows="3"></textarea></div>
-        <button type="submit" class="btn btn-ink">Send enquiry</button>
-        <p class="sent" id="sent">Thank you. We will be in touch shortly.</p>
-      </form>
-    </div>
-  </div>
-</section>
-
-<!-- ===================== FOOTER ===================== -->
-<footer>
-  <div class="foot-top">
-    <div class="foot-brand">JT Carpentry<small>Architectural Joinery, Perth WA</small></div>
-    <div class="foot-nav">
-      <div class="foot-col">
-        <span>Explore</span>
-        <a href="#work">Projects</a>
-        <a href="#services">Services</a>
-        <a href="#about">About</a>
-        <a href="#journal">Journal</a>
-      </div>
-      <div class="foot-col">
-        <span>Studio</span>
-        <a href="mailto:studio@jtcarpentrywa.com.au">studio@jtcarpentrywa.com.au</a>
-        <p>By appointment, across Perth and the western suburbs.</p>
-      </div>
-    </div>
-  </div>
-  <div class="foot-bottom">
-    <span>JT Carpentry WA. Perth, Western Australia.</span>
-    <span>Crafted in timber and good light.</span>
-  </div>
-</footer>
-
 <script>
-  // nav background on scroll
-  var hdr=document.getElementById('hdr');
-  function onScroll(){hdr.classList.toggle('scrolled',window.scrollY>40)}
-  window.addEventListener('scroll',onScroll,{passive:true});onScroll();
+  var rail=document.getElementById('rail');
+  var cards=Array.prototype.slice.call(rail.querySelectorAll('.card'));
+  var chipsBox=document.getElementById('chips');
+  var now=document.getElementById('now');
+  var cats=['Kitchen','Media wall','Wardrobe','Joinery','Panelling','Decking','Doors','Built-ins'];
 
-  // mobile drawer
-  var drawer=document.getElementById('drawer');
-  document.getElementById('menuBtn').addEventListener('click',function(){drawer.classList.add('open')});
-  document.getElementById('closeBtn').addEventListener('click',function(){drawer.classList.remove('open')});
-  drawer.querySelectorAll('[data-close]').forEach(function(a){a.addEventListener('click',function(){drawer.classList.remove('open')})});
+  // build numbered chips
+  cards.forEach(function(card,i){
+    var b=document.createElement('button');
+    b.className='chip'+(i===0?' on':'');
+    var nn=String(i+1).padStart(2,'0');
+    b.innerHTML=nn+'<span class="lbl">'+cats[i]+'</span>';
+    b.addEventListener('click',function(){
+      card.scrollIntoView({inline:'start',block:'nearest',behavior:'smooth'});
+      setActive(i);
+    });
+    chipsBox.appendChild(b);
+  });
+  var chips=Array.prototype.slice.call(chipsBox.children);
 
-  // gentle reveal on scroll
-  var io=new IntersectionObserver(function(entries){
-    entries.forEach(function(en){if(en.isIntersecting){en.target.classList.add('in');io.unobserve(en.target)}})
-  },{threshold:.16,rootMargin:'0px 0px -8% 0px'});
-  document.querySelectorAll('.reveal').forEach(function(el){io.observe(el)});
+  function setActive(i){
+    chips.forEach(function(c,j){c.classList.toggle('on',j===i)});
+    now.textContent=String(i+1).padStart(2,'0')+' / '+cards[i].dataset.name;
+  }
 
-  // contact form (front-end only placeholder)
+  // sync active chip to whichever card leads the rail
+  var ticking=false;
+  rail.addEventListener('scroll',function(){
+    if(ticking)return;ticking=true;
+    requestAnimationFrame(function(){
+      var best=0,bestd=Infinity;
+      cards.forEach(function(c,i){
+        var d=Math.abs(c.offsetLeft-rail.scrollLeft-rail.clientLeft);
+        if(d<bestd){bestd=d;best=i}
+      });
+      setActive(best);ticking=false;
+    });
+  },{passive:true});
+
+  // commission form (front-end only placeholder)
   document.getElementById('enq').addEventListener('submit',function(ev){
     ev.preventDefault();
     document.getElementById('sent').classList.add('show');
-    this.querySelector('button').textContent='Sent';
+    this.querySelector('button').firstChild.textContent='Sent ';
   });
 </script>
 </body>
