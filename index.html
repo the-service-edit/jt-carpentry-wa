@@ -34,7 +34,7 @@
   .btn{display:inline-flex;align-items:center;font-family:'Montserrat';font-weight:700;letter-spacing:.005em;border-radius:0;transition:all .2s cubic-bezier(.2,.7,.2,1);cursor:pointer}
 
   /* ---------- Hero (video + overlay nav + centred logo) ---------- */
-  .hero{padding:26px 26px 0}
+  .hero{padding:26px 26px 26px}
   .stage{position:relative;height:684px;overflow:hidden;background:#141618;box-shadow:var(--shadow-stage)}
   .stage video,.stage .poster{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:center 54%;
     animation:kb 26s ease-in-out infinite alternate;will-change:transform}
@@ -78,27 +78,29 @@
   .scrollcue svg{width:24px;height:24px;stroke:rgba(255,255,255,.78);stroke-width:1.8;fill:none;animation:bob 2s ease-in-out infinite}
   @keyframes bob{0%,100%{transform:translateY(-3px)}50%{transform:translateY(3px)}}
 
-  /* ---------- Trust band (credentials) ---------- */
-  .trust{background:var(--canvas);border-top:1px solid var(--hair)}
-  .trust-head{display:flex;align-items:center;justify-content:center;gap:20px;padding:32px 44px 0}
-  .trust-head .ln{height:1px;flex:0 0 60px;background:linear-gradient(90deg,transparent,var(--hair-2))}
-  .trust-head .ln.r{background:linear-gradient(90deg,var(--hair-2),transparent)}
-  .trust-head span{font-size:11.5px;font-weight:600;letter-spacing:.28em;text-transform:uppercase;color:var(--slate-2);white-space:nowrap}
-  .trust-grid{max-width:1340px;margin:0 auto;padding:0 44px;display:grid;grid-template-columns:repeat(4,1fr)}
-  .t-item{padding:34px 34px 38px;position:relative}
-  .t-item:first-child{padding-left:0}
-  .t-item:last-child{padding-right:0}
-  .t-item + .t-item::before{content:"";position:absolute;left:0;top:38px;bottom:38px;width:1px;background:var(--hair)}
-  .t-top{display:flex;align-items:center;margin-bottom:18px}
-  .t-ico{width:44px;height:44px;display:flex;align-items:center;justify-content:center;border:1px solid var(--hair-2);background:var(--paper);transition:all .25s}
-  .t-ico svg{width:22px;height:22px;stroke:var(--ink);stroke-width:1.6;fill:none;transition:stroke .25s}
-  .t-idx{margin-left:auto;font-family:'Montserrat',sans-serif;font-size:13px;font-weight:800;color:var(--timber);letter-spacing:.06em;font-variant-numeric:tabular-nums}
-  .t-item b{display:block;font-family:'Montserrat',sans-serif;font-size:15.5px;font-weight:800;color:var(--ink);letter-spacing:-.005em;line-height:1.22;text-transform:none}
-  .t-item small{display:block;font-size:13px;color:var(--slate);margin-top:6px;line-height:1.45}
-  .t-accent{height:2px;width:0;background:var(--timber);margin-top:18px;transition:width .45s cubic-bezier(.2,.7,.2,1)}
-  .t-item:hover .t-ico{border-color:var(--ink);background:var(--ink)}
-  .t-item:hover .t-ico svg{stroke:#fff}
-  .t-item:hover .t-accent{width:38px}
+  /* ---------- Intro band (editorial) ---------- */
+  .intro{background:var(--canvas);padding:84px 0 86px}
+  .intro .wrap{display:grid;grid-template-columns:1.22fr .78fr;gap:64px;align-items:start}
+  .intro .eyebrow{display:flex;align-items:center;gap:13px;margin-bottom:24px}
+  .intro .eyebrow i{width:26px;height:2px;background:var(--timber);flex-shrink:0}
+  .intro .eyebrow span{font-size:12px;font-weight:700;letter-spacing:.2em;text-transform:uppercase;color:var(--slate-2)}
+  .intro h2{font-family:'Montserrat',sans-serif;font-weight:700;font-size:clamp(28px,3.3vw,43px);
+    line-height:1.12;letter-spacing:-.02em;color:var(--ink)}
+  .intro h2 em{font-style:normal;color:var(--timber)}
+  .intro .col-r{padding-top:8px}
+  .intro .col-r p{font-size:16.5px;line-height:1.64;color:var(--slate)}
+  .intro-cta{display:inline-flex;align-items:center;gap:11px;margin-top:26px;
+    font-family:'Montserrat';font-weight:700;font-size:15px;color:var(--ink);position:relative}
+  .intro-cta .ar{width:34px;height:34px;background:var(--ink);display:flex;align-items:center;justify-content:center;transition:background .2s}
+  .intro-cta svg{width:15px;height:15px;stroke:#fff;stroke-width:2;fill:none;transition:transform .22s}
+  .intro-cta:hover .ar{background:var(--timber)}
+  .intro-cta:hover svg{transform:translateX(3px)}
+  .intro .creds{margin-top:34px;padding-top:26px;border-top:1px solid var(--hair);
+    display:flex;flex-wrap:wrap;align-items:center;gap:10px 0;font-size:12.5px;font-weight:600;
+    letter-spacing:.04em;color:var(--slate-2)}
+  .intro .creds .c{display:inline-flex;align-items:center;gap:8px}
+  .intro .creds .c svg{width:15px;height:15px;stroke:var(--timber);stroke-width:2.4;fill:none}
+  .intro .creds .d{width:4px;height:4px;background:var(--hair-2);border-radius:50%;margin:0 16px;transform:rotate(45deg)}
 
   /* ---------- Sticky mobile CTA ---------- */
   .callbar{display:none;position:fixed;left:0;right:0;bottom:0;z-index:60;background:var(--ink);
@@ -119,12 +121,6 @@
     .menu a::after,.menu a.current::after{display:none}
     .nav-cta{display:none}
     .hamburger{display:flex}
-    .trust-grid{grid-template-columns:repeat(2,1fr)}
-    .t-item{padding:28px 26px 30px}
-    .t-item:nth-child(odd){padding-left:0}
-    .t-item:nth-child(even){padding-right:0}
-    .t-item:nth-child(odd)::before{display:none}
-    .t-item:nth-child(3),.t-item:nth-child(4){border-top:1px solid var(--hair)}
   }
   @media(max-width:680px){
     .site{margin:0;box-shadow:none}
@@ -135,13 +131,11 @@
     .menu{top:72px}
     .brandhero{padding:72px 20px 0}
     .brandhero svg{width:min(78vw,360px)}
-    .trust-head{padding:26px 20px 0}
-    .trust-head .ln{flex-basis:30px}
-    .trust-head span{font-size:10.5px;letter-spacing:.2em;white-space:normal;text-align:center}
-    .trust-grid{grid-template-columns:1fr;padding:0 20px}
-    .t-item{padding:22px 0 24px!important}
-    .t-item + .t-item::before{display:none!important}
-    .t-item + .t-item{border-top:1px solid var(--hair)}
+    .intro{padding:48px 0 52px}
+    .intro .wrap{grid-template-columns:1fr;gap:26px}
+    .intro h2{font-size:27px}
+    .intro .creds{margin-top:26px;padding-top:22px}
+    .intro .creds .d{margin:0 12px}
     .callbar{display:block}
     body{padding-bottom:74px}
   }
@@ -202,52 +196,28 @@
     </div>
   </section>
 
-  <!-- Trust band -->
-  <div class="trust" id="trust">
-    <div class="trust-head">
-      <span class="ln"></span>
-      <span>Trusted by homeowners &amp; builders across Western Australia</span>
-      <span class="ln r"></span>
-    </div>
-    <div class="trust-grid">
-      <div class="t-item">
-        <div class="t-top">
-          <div class="t-ico"><svg viewBox="0 0 24 24"><path d="M12 3 4 6v5c0 5 3.4 8.5 8 10 4.6-1.5 8-5 8-10V6l-8-3Z"/><path d="m9 12 2 2 4-4"/></svg></div>
-          <span class="t-idx">01</span>
-        </div>
-        <b>Licensed &amp; Insured</b>
-        <small>Fully covered, WA registered</small>
-        <div class="t-accent"></div>
+  <!-- Intro band -->
+  <section class="intro" id="trust">
+    <div class="wrap">
+      <div class="col-l">
+        <div class="eyebrow"><i></i><span>Custom Carpentry · Perth &amp; WA</span></div>
+        <h2>The decks, extensions and finishes Perth families are proud of — <em>for decades.</em></h2>
       </div>
-      <div class="t-item">
-        <div class="t-top">
-          <div class="t-ico"><svg viewBox="0 0 24 24"><path d="M12 21s7-5.4 7-11a7 7 0 1 0-14 0c0 5.6 7 11 7 11Z"/><circle cx="12" cy="10" r="2.4"/></svg></div>
-          <span class="t-idx">02</span>
+      <div class="col-r">
+        <p>From new homes to bespoke fit-outs, we bring precise, honest workmanship to every job — and treat every build like it's our own.</p>
+        <a href="#" class="intro-cta">Request a free consultation
+          <span class="ar"><svg viewBox="0 0 24 24"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span>
+        </a>
+        <div class="creds">
+          <span class="c"><svg viewBox="0 0 24 24"><path d="m5 12 4.5 4.5L19 7"/></svg>Licensed &amp; insured</span>
+          <span class="d"></span>
+          <span class="c"><svg viewBox="0 0 24 24"><path d="m5 12 4.5 4.5L19 7"/></svg>Locally owned</span>
+          <span class="d"></span>
+          <span class="c"><svg viewBox="0 0 24 24"><path d="m5 12 4.5 4.5L19 7"/></svg>Obligation-free quotes</span>
         </div>
-        <b>Locally Owned &amp; Operated</b>
-        <small>Perth &amp; regional WA</small>
-        <div class="t-accent"></div>
-      </div>
-      <div class="t-item">
-        <div class="t-top">
-          <div class="t-ico"><svg viewBox="0 0 24 24"><path d="M14.7 6.3 4 17v3h3L17.7 9.3M14.7 6.3l2.3-2.3a1.6 1.6 0 0 1 2.3 0l.7.7a1.6 1.6 0 0 1 0 2.3l-2.3 2.3M14.7 6.3 17.7 9.3"/></svg></div>
-          <span class="t-idx">03</span>
-        </div>
-        <b>Quality Custom Carpentry</b>
-        <small>Precise, bespoke workmanship</small>
-        <div class="t-accent"></div>
-      </div>
-      <div class="t-item">
-        <div class="t-top">
-          <div class="t-ico"><svg viewBox="0 0 24 24"><path d="M14 3H7a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V8Z"/><path d="M14 3v5h5"/><path d="m8.5 13.5 2 2 4-4"/></svg></div>
-          <span class="t-idx">04</span>
-        </div>
-        <b>Obligation-Free Quotes</b>
-        <small>Honest, no-pressure pricing</small>
-        <div class="t-accent"></div>
       </div>
     </div>
-  </div>
+  </section>
 
 </div>
 
