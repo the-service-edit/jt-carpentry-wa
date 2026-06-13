@@ -78,29 +78,28 @@
   .scrollcue svg{width:24px;height:24px;stroke:rgba(255,255,255,.78);stroke-width:1.8;fill:none;animation:bob 2s ease-in-out infinite}
   @keyframes bob{0%,100%{transform:translateY(-3px)}50%{transform:translateY(3px)}}
 
-  /* ---------- Intro band (editorial) ---------- */
-  .intro{background:var(--canvas);padding:84px 0 86px}
-  .intro .wrap{display:grid;grid-template-columns:1.22fr .78fr;gap:64px;align-items:start}
-  .intro .eyebrow{display:flex;align-items:center;gap:13px;margin-bottom:24px}
-  .intro .eyebrow i{width:26px;height:2px;background:var(--timber);flex-shrink:0}
-  .intro .eyebrow span{font-size:12px;font-weight:700;letter-spacing:.2em;text-transform:uppercase;color:var(--slate-2)}
-  .intro h2{font-family:'Montserrat',sans-serif;font-weight:700;font-size:clamp(28px,3.3vw,43px);
-    line-height:1.12;letter-spacing:-.02em;color:var(--ink)}
-  .intro h2 em{font-style:normal;color:var(--timber)}
-  .intro .col-r{padding-top:8px}
-  .intro .col-r p{font-size:16.5px;line-height:1.64;color:var(--slate)}
-  .intro-cta{display:inline-flex;align-items:center;gap:11px;margin-top:26px;
-    font-family:'Montserrat';font-weight:700;font-size:15px;color:var(--ink);position:relative}
-  .intro-cta .ar{width:34px;height:34px;background:var(--ink);display:flex;align-items:center;justify-content:center;transition:background .2s}
-  .intro-cta svg{width:15px;height:15px;stroke:#fff;stroke-width:2;fill:none;transition:transform .22s}
-  .intro-cta:hover .ar{background:var(--timber)}
-  .intro-cta:hover svg{transform:translateX(3px)}
-  .intro .creds{margin-top:34px;padding-top:26px;border-top:1px solid var(--hair);
-    display:flex;flex-wrap:wrap;align-items:center;gap:10px 0;font-size:12.5px;font-weight:600;
-    letter-spacing:.04em;color:var(--slate-2)}
-  .intro .creds .c{display:inline-flex;align-items:center;gap:8px}
-  .intro .creds .c svg{width:15px;height:15px;stroke:var(--timber);stroke-width:2.4;fill:none}
-  .intro .creds .d{width:4px;height:4px;background:var(--hair-2);border-radius:50%;margin:0 16px;transform:rotate(45deg)}
+  /* ---------- Portfolio (layered editorial) ---------- */
+  .portfolio{position:relative;background:var(--canvas);min-height:680px;overflow:hidden}
+  .pf-img{position:absolute;top:54px;bottom:54px;right:0;width:56%;overflow:hidden}
+  .pf-img img{width:100%;height:100%;object-fit:cover;object-position:38% 64%}
+  .pf-panel{position:absolute;top:50%;left:0;transform:translateY(-50%);z-index:3;
+    width:54%;max-width:680px;background:var(--canvas);
+    padding:64px 76px 64px clamp(36px,7vw,118px);
+    box-shadow:54px 0 110px -58px rgba(20,21,23,.20)}
+  .pf-panel::after{content:"";position:absolute;top:0;right:-44px;width:44px;height:66px;background:var(--canvas)}
+  .pf-eyebrow{display:flex;align-items:center;gap:13px;margin-bottom:22px}
+  .pf-eyebrow i{width:26px;height:2px;background:var(--timber)}
+  .pf-eyebrow span{font-size:12px;font-weight:700;letter-spacing:.22em;text-transform:uppercase;color:var(--slate-2)}
+  .portfolio h2{font-family:'Montserrat',sans-serif;font-weight:800;font-size:clamp(30px,3.4vw,46px);
+    line-height:1.04;letter-spacing:-.02em;color:var(--ink);text-transform:uppercase;margin-bottom:22px}
+  .portfolio h2 em{font-style:normal;color:var(--timber)}
+  .portfolio p{font-size:16px;line-height:1.66;color:var(--slate);max-width:30em;margin-bottom:34px}
+  .btn-outline{display:inline-flex;align-items:center;gap:14px;height:54px;padding:0 28px;
+    border:1.5px solid var(--ink);font-family:'Montserrat';font-weight:700;font-size:12.5px;
+    letter-spacing:.16em;text-transform:uppercase;color:var(--ink);transition:all .22s}
+  .btn-outline svg{width:15px;height:15px;stroke:var(--ink);stroke-width:2;fill:none;transition:transform .22s,stroke .22s}
+  .btn-outline:hover{background:var(--ink);color:#fff}
+  .btn-outline:hover svg{stroke:#fff;transform:translateX(3px)}
 
   /* ---------- Sticky mobile CTA ---------- */
   .callbar{display:none;position:fixed;left:0;right:0;bottom:0;z-index:60;background:var(--ink);
@@ -131,11 +130,14 @@
     .menu{top:72px}
     .brandhero{padding:72px 20px 0}
     .brandhero svg{width:min(78vw,360px)}
-    .intro{padding:48px 0 52px}
-    .intro .wrap{grid-template-columns:1fr;gap:26px}
-    .intro h2{font-size:27px}
-    .intro .creds{margin-top:26px;padding-top:22px}
-    .intro .creds .d{margin:0 12px}
+    .portfolio{min-height:0;display:flex;flex-direction:column}
+    .pf-img{position:relative;top:0;bottom:0;right:0;width:100%;height:280px}
+    .pf-img img{object-position:42% 62%}
+    .pf-panel{position:relative;top:0;transform:none;width:100%;max-width:100%;
+      padding:38px 24px 44px;box-shadow:none}
+    .pf-panel::after{display:none}
+    .portfolio h2{font-size:30px}
+    .portfolio p{font-size:15.5px;max-width:none}
     .callbar{display:block}
     body{padding-bottom:74px}
   }
@@ -190,32 +192,24 @@
         </svg>
       </div>
 
-      <a href="#trust" class="scrollcue" aria-label="Scroll down">
+      <a href="#portfolio" class="scrollcue" aria-label="Scroll down">
         <svg viewBox="0 0 24 24"><path d="M6 9l6 6 6-6"/></svg>
       </a>
     </div>
   </section>
 
-  <!-- Intro band -->
-  <section class="intro" id="trust">
-    <div class="wrap">
-      <div class="col-l">
-        <div class="eyebrow"><i></i><span>Custom Carpentry · Perth &amp; WA</span></div>
-        <h2>The decks, extensions and finishes Perth families are proud of — <em>for decades.</em></h2>
-      </div>
-      <div class="col-r">
-        <p>From new homes to bespoke fit-outs, we bring precise, honest workmanship to every job — and treat every build like it's our own.</p>
-        <a href="#" class="intro-cta">Request a free consultation
-          <span class="ar"><svg viewBox="0 0 24 24"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span>
-        </a>
-        <div class="creds">
-          <span class="c"><svg viewBox="0 0 24 24"><path d="m5 12 4.5 4.5L19 7"/></svg>Licensed &amp; insured</span>
-          <span class="d"></span>
-          <span class="c"><svg viewBox="0 0 24 24"><path d="m5 12 4.5 4.5L19 7"/></svg>Locally owned</span>
-          <span class="d"></span>
-          <span class="c"><svg viewBox="0 0 24 24"><path d="m5 12 4.5 4.5L19 7"/></svg>Obligation-free quotes</span>
-        </div>
-      </div>
+  <!-- Portfolio -->
+  <section class="portfolio" id="portfolio">
+    <div class="pf-img">
+      <img src="assets/portfolio.jpg" alt="Custom carpentry project by JT Carpentry WA — modern home with vertical cladding, Western Australia">
+    </div>
+    <div class="pf-panel">
+      <div class="pf-eyebrow"><i></i><span>Portfolio</span></div>
+      <h2>Our work,<br><em>across WA.</em></h2>
+      <p>From contemporary new builds to extensions, decking, cladding and bespoke fit-outs — every JT Carpentry WA project is built with precision and finished to last. Take a look through a selection of our recent work across Perth and Western Australia.</p>
+      <a href="https://www.instagram.com/jtcarpentrywa/" class="btn-outline">View Portfolio
+        <svg viewBox="0 0 24 24"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+      </a>
     </div>
   </section>
 
