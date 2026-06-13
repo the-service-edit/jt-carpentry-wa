@@ -86,7 +86,6 @@
     width:54%;max-width:680px;background:var(--canvas);
     padding:64px 76px 64px clamp(36px,7vw,118px);
     box-shadow:54px 0 110px -58px rgba(20,21,23,.20)}
-  .pf-panel::after{content:"";position:absolute;top:0;right:-44px;width:44px;height:66px;background:var(--canvas)}
   .pf-eyebrow{display:flex;align-items:center;margin-bottom:20px}
   .pf-eyebrow span{font-size:12px;font-weight:700;letter-spacing:.24em;text-transform:uppercase;color:var(--slate-2)}
   .portfolio h2{font-family:'Montserrat',sans-serif;font-weight:800;font-size:clamp(30px,3.4vw,46px);
@@ -130,13 +129,13 @@
     .brandhero{padding:72px 20px 0}
     .brandhero svg{width:min(78vw,360px)}
     .portfolio{min-height:0;display:flex;flex-direction:column}
-    .pf-img{position:relative;top:0;bottom:0;right:0;width:100%;height:340px}
+    .pf-panel{order:1;position:relative;top:0;transform:none;width:100%;max-width:100%;
+      padding:46px 24px 30px;box-shadow:none}
+    .pf-img{order:2;position:relative;top:0;bottom:0;right:0;width:100%;height:auto;
+      aspect-ratio:4/5;max-height:500px}
     .pf-img img{object-position:center}
-    .pf-panel{position:relative;top:0;transform:none;width:100%;max-width:100%;
-      padding:40px 24px 46px;box-shadow:none}
-    .pf-panel::after{display:none}
     .portfolio h2{font-size:30px;margin-bottom:18px}
-    .portfolio p{font-size:15.5px;max-width:none;margin-bottom:28px}
+    .portfolio p{font-size:15.5px;max-width:none;margin-bottom:30px}
     .callbar{display:block}
     body{padding-bottom:74px}
   }
