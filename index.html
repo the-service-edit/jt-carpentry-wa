@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>JT Carpentry WA — Custom Carpentry, Perth &amp; Western Australia</title>
+<title>JT Carpentry WA | Custom Carpentry, Perth &amp; Western Australia</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800&display=swap" rel="stylesheet">
@@ -52,18 +52,18 @@
     gap:22px;padding:0 40px}
   .menu{display:flex;align-items:center;gap:34px;margin:0 auto 0 0}
   .menu a{font-size:14px;font-weight:500;color:rgba(255,255,255,.82);letter-spacing:.02em;position:relative;padding:7px 0;transition:color .16s}
-  .menu a::after{content:"";position:absolute;left:0;right:100%;bottom:0;height:1.5px;background:var(--timber);transition:right .3s cubic-bezier(.2,.7,.2,1)}
+  .menu a::after{content:"";position:absolute;left:0;right:100%;bottom:0;height:1.5px;background:#fff;transition:right .3s cubic-bezier(.2,.7,.2,1)}
   .menu a:hover{color:#fff}
   .menu a:hover::after,.menu a.current::after{right:0}
   .menu a.current{color:#fff}
   .nav-meta{display:flex;align-items:center;gap:8px;color:rgba(255,255,255,.7);font-size:12.5px;font-weight:500;letter-spacing:.04em}
-  .nav-meta svg{width:14px;height:14px;stroke:var(--timber);stroke-width:1.8;fill:none}
+  .nav-meta svg{width:14px;height:14px;stroke:rgba(255,255,255,.72);stroke-width:1.8;fill:none}
   .nav-div{width:1px;height:24px;background:rgba(255,255,255,.22)}
   .nav-cta{background:#fff;color:var(--ink);font-size:14px;height:48px;padding:0 8px 0 22px;gap:14px;font-weight:700}
   .nav-cta .ic{width:32px;height:32px;background:var(--ink);display:flex;align-items:center;justify-content:center;transition:background .2s}
   .nav-cta svg{width:15px;height:15px;stroke:#fff;stroke-width:2;fill:none;transition:transform .22s}
-  .nav-cta:hover{background:var(--timber);color:#fff}
-  .nav-cta:hover .ic{background:rgba(0,0,0,.25)}
+  .nav-cta:hover{background:var(--ink);color:#fff;border-color:var(--ink)}
+  .nav-cta:hover .ic{background:rgba(255,255,255,.2)}
   .nav-cta:hover svg{transform:translateX(2px)}
   .hamburger{display:none;width:48px;height:48px;border:1.5px solid rgba(255,255,255,.5);background:rgba(255,255,255,.06);
     align-items:center;justify-content:center;cursor:pointer;flex-shrink:0;margin-left:auto}
@@ -81,18 +81,17 @@
   /* ---------- Portfolio (layered editorial) ---------- */
   .portfolio{position:relative;background:var(--canvas);min-height:680px;overflow:hidden}
   .pf-img{position:absolute;top:54px;bottom:54px;right:0;width:56%;overflow:hidden}
-  .pf-img img{width:100%;height:100%;object-fit:cover;object-position:38% 64%}
+  .pf-img img{width:100%;height:100%;object-fit:cover;object-position:center}
   .pf-panel{position:absolute;top:50%;left:0;transform:translateY(-50%);z-index:3;
     width:54%;max-width:680px;background:var(--canvas);
     padding:64px 76px 64px clamp(36px,7vw,118px);
     box-shadow:54px 0 110px -58px rgba(20,21,23,.20)}
   .pf-panel::after{content:"";position:absolute;top:0;right:-44px;width:44px;height:66px;background:var(--canvas)}
-  .pf-eyebrow{display:flex;align-items:center;gap:13px;margin-bottom:22px}
-  .pf-eyebrow i{width:26px;height:2px;background:var(--timber)}
-  .pf-eyebrow span{font-size:12px;font-weight:700;letter-spacing:.22em;text-transform:uppercase;color:var(--slate-2)}
+  .pf-eyebrow{display:flex;align-items:center;margin-bottom:20px}
+  .pf-eyebrow span{font-size:12px;font-weight:700;letter-spacing:.24em;text-transform:uppercase;color:var(--slate-2)}
   .portfolio h2{font-family:'Montserrat',sans-serif;font-weight:800;font-size:clamp(30px,3.4vw,46px);
     line-height:1.04;letter-spacing:-.02em;color:var(--ink);text-transform:uppercase;margin-bottom:22px}
-  .portfolio h2 em{font-style:normal;color:var(--timber)}
+  .portfolio h2 em{font-style:normal;color:var(--ink)}
   .portfolio p{font-size:16px;line-height:1.66;color:var(--slate);max-width:30em;margin-bottom:34px}
   .btn-outline{display:inline-flex;align-items:center;gap:14px;height:54px;padding:0 28px;
     border:1.5px solid var(--ink);font-family:'Montserrat';font-weight:700;font-size:12.5px;
@@ -131,13 +130,13 @@
     .brandhero{padding:72px 20px 0}
     .brandhero svg{width:min(78vw,360px)}
     .portfolio{min-height:0;display:flex;flex-direction:column}
-    .pf-img{position:relative;top:0;bottom:0;right:0;width:100%;height:280px}
-    .pf-img img{object-position:42% 62%}
+    .pf-img{position:relative;top:0;bottom:0;right:0;width:100%;height:340px}
+    .pf-img img{object-position:center}
     .pf-panel{position:relative;top:0;transform:none;width:100%;max-width:100%;
-      padding:38px 24px 44px;box-shadow:none}
+      padding:40px 24px 46px;box-shadow:none}
     .pf-panel::after{display:none}
-    .portfolio h2{font-size:30px}
-    .portfolio p{font-size:15.5px;max-width:none}
+    .portfolio h2{font-size:30px;margin-bottom:18px}
+    .portfolio p{font-size:15.5px;max-width:none;margin-bottom:28px}
     .callbar{display:block}
     body{padding-bottom:74px}
   }
@@ -201,12 +200,12 @@
   <!-- Portfolio -->
   <section class="portfolio" id="portfolio">
     <div class="pf-img">
-      <img src="assets/portfolio.jpg" alt="Custom carpentry project by JT Carpentry WA — modern home with vertical cladding, Western Australia">
+      <img src="assets/portfolio.jpg" alt="Custom carpentry project by JT Carpentry WA, modern home with vertical cladding, Western Australia">
     </div>
     <div class="pf-panel">
-      <div class="pf-eyebrow"><i></i><span>Portfolio</span></div>
+      <div class="pf-eyebrow"><span>Portfolio</span></div>
       <h2>Our work,<br><em>across WA.</em></h2>
-      <p>From contemporary new builds to extensions, decking, cladding and bespoke fit-outs — every JT Carpentry WA project is built with precision and finished to last. Take a look through a selection of our recent work across Perth and Western Australia.</p>
+      <p>From contemporary new builds to extensions, decking, cladding and bespoke fit-outs, every JT Carpentry WA project is built with precision and finished to last. Take a look through a selection of our recent work across Perth and Western Australia.</p>
       <a href="https://www.instagram.com/jtcarpentrywa/" class="btn-outline">View Portfolio
         <svg viewBox="0 0 24 24"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
       </a>
