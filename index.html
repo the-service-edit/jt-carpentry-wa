@@ -177,14 +177,22 @@
   /* ---------- New sections: responsive ---------- */
   @media(max-width:1080px){
     .svc-grid{grid-template-columns:repeat(2,1fr)}
+    /* touch devices: show the work image by default (no hover) */
+    .svc{min-height:240px;display:flex;flex-direction:column;justify-content:flex-end}
+    .svc-bg{opacity:1;transform:none}
+    .svc-scrim{opacity:1}
+    .svc-ic svg{stroke:#fff;margin-bottom:14px}
+    .svc-n{color:rgba(255,255,255,.72)}
+    .svc h3{color:#fff}
+    .svc p{color:rgba(255,255,255,.9)}
     .about .wrap{grid-template-columns:1fr;gap:40px}
     .contact .wrap{flex-direction:column;align-items:flex-start;gap:30px}
     .contact h2{max-width:18ch}
   }
   @media(max-width:680px){
-    .svc-grid{grid-template-columns:1fr}
-    .svc{padding:26px 22px 30px}
-    .svc-n{top:28px;right:22px}
+    .svc-grid{grid-template-columns:1fr;gap:12px;border:none}
+    .svc{border:none;padding:24px;min-height:230px}
+    .svc-n{top:24px;right:22px}
     .f-cols{gap:36px}
     .footer .wrap{padding-top:46px}
     .f-bottom .wrap{flex-direction:column;gap:10px;padding-bottom:30px}
