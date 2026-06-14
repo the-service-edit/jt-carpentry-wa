@@ -3,6 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<script>document.documentElement.classList.add('js')</script>
 <title>JT Carpentry WA | Custom Carpentry, Perth &amp; Western Australia</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -98,6 +99,86 @@
   .btn-outline svg{width:15px;height:15px;stroke:var(--ink);stroke-width:2;fill:none;transition:transform .22s,stroke .22s}
   .btn-outline:hover{background:var(--ink);color:#fff}
   .btn-outline:hover svg{stroke:#fff;transform:translateX(3px)}
+
+  /* ---------- Section primitives ---------- */
+  .sec-eyebrow{font-size:12px;font-weight:700;letter-spacing:.24em;text-transform:uppercase;color:var(--slate-2);margin-bottom:16px}
+  .sec-head h2{font-family:'Montserrat',sans-serif;font-weight:800;font-size:clamp(30px,3.6vw,48px);line-height:1.04;letter-spacing:-.02em;text-transform:uppercase;color:var(--ink)}
+  .sec-head p{margin-top:18px;font-size:16.5px;line-height:1.62;color:var(--slate);max-width:40em}
+
+  /* ---------- Services ---------- */
+  .services{background:var(--canvas);padding:clamp(64px,7vw,104px) 0}
+  .svc-grid{margin-top:clamp(40px,4vw,56px);display:grid;grid-template-columns:repeat(3,1fr);
+    border-top:1px solid var(--hair);border-left:1px solid var(--hair)}
+  .svc{border-right:1px solid var(--hair);border-bottom:1px solid var(--hair);
+    padding:36px 34px 42px;position:relative;transition:background .25s}
+  .svc:hover{background:var(--paper)}
+  .svc-ic svg{width:30px;height:30px;stroke:var(--ink);stroke-width:1.5;fill:none;margin-bottom:22px}
+  .svc-n{position:absolute;top:34px;right:32px;font-family:'Montserrat';font-weight:800;font-size:12px;color:var(--hair-2);letter-spacing:.06em}
+  .svc h3{font-family:'Montserrat',sans-serif;font-weight:800;font-size:16.5px;letter-spacing:-.01em;color:var(--ink);margin-bottom:10px}
+  .svc p{font-size:13.5px;line-height:1.56;color:var(--slate-2)}
+
+  /* ---------- About / Why ---------- */
+  .about{background:var(--paper);padding:clamp(64px,7vw,104px) 0}
+  .about .wrap{display:grid;grid-template-columns:1.05fr .95fr;gap:clamp(40px,5vw,84px);align-items:center}
+  .about-copy p{margin-top:20px;font-size:16px;line-height:1.66;color:var(--slate);max-width:34em}
+  .why-list{border-top:1px solid var(--hair-2)}
+  .why{display:flex;align-items:flex-start;gap:16px;padding:22px 2px;border-bottom:1px solid var(--hair-2)}
+  .why .ck{flex-shrink:0;width:36px;height:36px;border:1px solid var(--hair-2);background:var(--canvas);display:flex;align-items:center;justify-content:center}
+  .why .ck svg{width:18px;height:18px;stroke:var(--ink);stroke-width:2;fill:none}
+  .why b{display:block;font-family:'Montserrat';font-weight:800;font-size:15px;color:var(--ink);letter-spacing:-.005em}
+  .why small{display:block;font-size:13px;color:var(--slate-2);margin-top:3px;line-height:1.45}
+
+  /* ---------- Contact CTA ---------- */
+  .contact{background:var(--ink);color:#fff;padding:clamp(70px,8vw,118px) 0}
+  .contact .wrap{display:flex;align-items:center;justify-content:space-between;gap:48px;flex-wrap:wrap}
+  .c-eyebrow{font-size:12px;font-weight:700;letter-spacing:.24em;text-transform:uppercase;color:rgba(255,255,255,.55);margin-bottom:18px}
+  .contact h2{font-family:'Montserrat';font-weight:800;font-size:clamp(32px,3.9vw,54px);line-height:1.0;letter-spacing:-.022em;color:#fff;max-width:15ch}
+  .c-right{max-width:380px}
+  .c-right p{font-size:16px;line-height:1.62;color:rgba(255,255,255,.7);margin-bottom:26px}
+  .btn-light{display:inline-flex;align-items:center;gap:16px;height:60px;padding:0 10px 0 28px;background:#fff;color:var(--ink);font-family:'Montserrat';font-weight:800;font-size:14px;letter-spacing:.02em;transition:all .2s}
+  .btn-light .ic{width:40px;height:40px;background:var(--ink);display:flex;align-items:center;justify-content:center;transition:background .2s}
+  .btn-light svg{width:16px;height:16px;stroke:#fff;stroke-width:2;fill:none;transition:transform .22s}
+  .btn-light:hover{transform:translateY(-2px)}
+  .btn-light:hover svg{transform:translateX(3px)}
+
+  /* ---------- Footer ---------- */
+  .footer{background:#0E0F11;color:rgba(255,255,255,.62)}
+  .footer .wrap{padding-top:56px;padding-bottom:0;display:flex;justify-content:space-between;gap:40px 64px;flex-wrap:wrap}
+  .f-brand{max-width:300px}
+  .f-logo{display:flex;align-items:center;gap:13px;margin-bottom:16px}
+  .f-logo svg{height:38px;width:auto}
+  .f-brand p{font-size:13px;line-height:1.6;color:rgba(255,255,255,.5)}
+  .f-cols{display:flex;gap:60px;flex-wrap:wrap}
+  .f-col h4{font-family:'Montserrat';font-weight:800;font-size:11.5px;letter-spacing:.16em;text-transform:uppercase;color:#fff;margin-bottom:15px}
+  .f-col a{display:block;font-size:13.5px;color:rgba(255,255,255,.6);padding:5px 0;transition:color .15s}
+  .f-col a:hover{color:#fff}
+  .f-bottom{border-top:1px solid rgba(255,255,255,.1);margin-top:48px}
+  .f-bottom .wrap{padding-top:22px;padding-bottom:34px;display:flex;justify-content:space-between;gap:14px;flex-wrap:wrap;
+    font-size:12px;color:rgba(255,255,255,.42);letter-spacing:.02em}
+
+  /* ---------- Scroll reveal (Apple-style) ---------- */
+  .js .reveal{opacity:0;transform:translateY(32px);transition:opacity .9s cubic-bezier(.16,1,.3,1),transform .9s cubic-bezier(.16,1,.3,1)}
+  .js .reveal.in{opacity:1;transform:none}
+  .js .reveal.d1{transition-delay:.08s}.js .reveal.d2{transition-delay:.16s}.js .reveal.d3{transition-delay:.24s}
+  .js .svc.reveal{transition-delay:calc(var(--i,0)*70ms)}
+  .js .why.reveal{transition-delay:calc(var(--i,0)*60ms)}
+  @media (prefers-reduced-motion: reduce){.js .reveal{opacity:1!important;transform:none!important;transition:none!important}}
+
+  /* ---------- New sections: responsive ---------- */
+  @media(max-width:1080px){
+    .svc-grid{grid-template-columns:repeat(2,1fr)}
+    .about .wrap{grid-template-columns:1fr;gap:40px}
+    .contact .wrap{flex-direction:column;align-items:flex-start;gap:30px}
+    .contact h2{max-width:18ch}
+  }
+  @media(max-width:680px){
+    .svc-grid{grid-template-columns:1fr}
+    .svc{padding:26px 22px 30px}
+    .svc-n{top:28px;right:22px}
+    .f-cols{gap:36px}
+    .footer .wrap{padding-top:46px}
+    .f-bottom .wrap{flex-direction:column;gap:10px;padding-bottom:30px}
+  }
 
   /* ---------- Sticky mobile CTA ---------- */
   .callbar{display:none;position:fixed;left:0;right:0;bottom:0;z-index:60;background:var(--ink);
@@ -196,20 +277,153 @@
     </div>
   </section>
 
+  <!-- Services -->
+  <section class="services" id="services">
+    <div class="wrap">
+      <div class="sec-head reveal">
+        <div class="sec-eyebrow">What We Do</div>
+        <h2>Carpentry, start to finish.</h2>
+        <p>From the first frame to the final fix-out, JT Carpentry WA handles every stage of the build. Whatever your project, it's built with precision and finished to last.</p>
+      </div>
+      <div class="svc-grid">
+        <div class="svc reveal" style="--i:0">
+          <div class="svc-ic"><svg viewBox="0 0 24 24"><path d="M3 11 12 4l9 7M5 9.5V20h14V9.5M9.5 20v-6h5v6"/></svg></div>
+          <span class="svc-n">01</span>
+          <h3>New Homes</h3>
+          <p>Custom new builds crafted from the ground up, framed and finished to the highest standard.</p>
+        </div>
+        <div class="svc reveal" style="--i:1">
+          <div class="svc-ic"><svg viewBox="0 0 24 24"><path d="M3 7l9-4 9 4-9 4-9-4ZM3 12l9 4 9-4M3 17l9 4 9-4"/></svg></div>
+          <span class="svc-n">02</span>
+          <h3>Extensions &amp; Additions</h3>
+          <p>Second storeys, room additions and reconfigurations that grow with your family.</p>
+        </div>
+        <div class="svc reveal" style="--i:2">
+          <div class="svc-ic"><svg viewBox="0 0 24 24"><path d="M3 8h18M3 12h18M3 16h18M7 8v8M12 8v8M17 8v8"/></svg></div>
+          <span class="svc-n">03</span>
+          <h3>Decking &amp; Outdoor</h3>
+          <p>Timber decks, alfresco areas and pergolas built for the way we live in WA.</p>
+        </div>
+        <div class="svc reveal" style="--i:3">
+          <div class="svc-ic"><svg viewBox="0 0 24 24"><path d="M4 4h16v16H4zM8 4v16M12 4v16M16 4v16"/></svg></div>
+          <span class="svc-n">04</span>
+          <h3>Cladding &amp; Facades</h3>
+          <p>Timber and composite cladding that transforms the look and feel of any home.</p>
+        </div>
+        <div class="svc reveal" style="--i:4">
+          <div class="svc-ic"><svg viewBox="0 0 24 24"><path d="M5 3h14v18H5zM5 12h14M9.5 7.5h0M9.5 16.5h0"/></svg></div>
+          <span class="svc-n">05</span>
+          <h3>Bespoke Joinery &amp; Fit-Outs</h3>
+          <p>Built-in cabinetry, custom carpentry and fine interior finishing work.</p>
+        </div>
+        <div class="svc reveal" style="--i:5">
+          <div class="svc-ic"><svg viewBox="0 0 24 24"><path d="M14.5 5.5a3.5 3.5 0 0 0-4.8 4.3l-6 6a1.7 1.7 0 0 0 2.4 2.4l6-6a3.5 3.5 0 0 0 4.3-4.8l-2.2 2.2-1.9-.4-.4-1.9z"/></svg></div>
+          <span class="svc-n">06</span>
+          <h3>Renovations &amp; Repairs</h3>
+          <p>Renovations, restorations and structural carpentry done properly, first time.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
   <!-- Portfolio -->
   <section class="portfolio" id="portfolio">
-    <div class="pf-img">
+    <div class="pf-img reveal">
       <img src="assets/portfolio.jpg" alt="Custom carpentry project by JT Carpentry WA, modern home with vertical cladding, Western Australia">
     </div>
     <div class="pf-panel">
-      <div class="pf-eyebrow"><span>Portfolio</span></div>
-      <h2>Our work,<br><em>across WA.</em></h2>
-      <p>From contemporary new builds to extensions, decking, cladding and bespoke fit-outs, every JT Carpentry WA project is built with precision and finished to last. Take a look through a selection of our recent work across Perth and Western Australia.</p>
-      <a href="https://www.instagram.com/jtcarpentrywa/" class="btn-outline">View Portfolio
+      <div class="pf-eyebrow reveal"><span>Portfolio</span></div>
+      <h2 class="reveal d1">Our work,<br><em>across WA.</em></h2>
+      <p class="reveal d2">From contemporary new builds to extensions, decking, cladding and bespoke fit-outs, every JT Carpentry WA project is built with precision and finished to last. Take a look through a selection of our recent work across Perth and Western Australia.</p>
+      <a href="https://www.instagram.com/jtcarpentrywa/" class="btn-outline reveal d3">View Portfolio
         <svg viewBox="0 0 24 24"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
       </a>
     </div>
   </section>
+
+  <!-- About / Why -->
+  <section class="about" id="about">
+    <div class="wrap">
+      <div class="about-copy reveal">
+        <div class="sec-eyebrow">About JT Carpentry WA</div>
+        <div class="sec-head"><h2>Built on craft and trust.</h2></div>
+        <p>JT Carpentry WA is a Perth-based custom carpentry team delivering quality residential building right across Western Australia. From new homes to fine fit-outs, we bring precision, honest advice and a genuine pride in our work to every project.</p>
+        <p>We treat every home like it's our own: turning up when we say we will, communicating clearly, and finishing to a standard we'd be happy to live with.</p>
+      </div>
+      <div class="why-list">
+        <div class="why reveal" style="--i:0">
+          <span class="ck"><svg viewBox="0 0 24 24"><path d="M12 3 4 6v5c0 5 3.4 8.5 8 10 4.6-1.5 8-5 8-10V6l-8-3Z"/><path d="m9 12 2 2 4-4"/></svg></span>
+          <span><b>Licensed &amp; Insured</b><small>Fully covered and WA registered for total peace of mind.</small></span>
+        </div>
+        <div class="why reveal" style="--i:1">
+          <span class="ck"><svg viewBox="0 0 24 24"><path d="M12 21s7-5.4 7-11a7 7 0 1 0-14 0c0 5.6 7 11 7 11Z"/><circle cx="12" cy="10" r="2.4"/></svg></span>
+          <span><b>Locally Owned &amp; Operated</b><small>Perth based, working across the metro area and regional WA.</small></span>
+        </div>
+        <div class="why reveal" style="--i:2">
+          <span class="ck"><svg viewBox="0 0 24 24"><path d="M14.7 6.3 4 17v3h3L17.7 9.3M14.7 6.3l2.3-2.3a1.6 1.6 0 0 1 2.3 0l.7.7a1.6 1.6 0 0 1 0 2.3l-2.3 2.3M14.7 6.3 17.7 9.3"/></svg></span>
+          <span><b>Quality Custom Carpentry</b><small>Precise, bespoke workmanship on every job, big or small.</small></span>
+        </div>
+        <div class="why reveal" style="--i:3">
+          <span class="ck"><svg viewBox="0 0 24 24"><path d="M14 3H7a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V8Z"/><path d="M14 3v5h5"/><path d="m8.5 13.5 2 2 4-4"/></svg></span>
+          <span><b>Obligation-Free Quotes</b><small>Honest, upfront pricing with no pressure and no surprises.</small></span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Contact CTA -->
+  <section class="contact" id="contact">
+    <div class="wrap">
+      <div class="reveal">
+        <div class="c-eyebrow">Get Started</div>
+        <h2>Let's build something you're proud of.</h2>
+      </div>
+      <div class="c-right reveal d1">
+        <p>Tell us about your project and we'll get back to you with an obligation-free quote. Servicing Perth and regional WA.</p>
+        <a href="#" class="btn-light">Start Your Project
+          <span class="ic"><svg viewBox="0 0 24 24"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <div class="wrap">
+      <div class="f-brand">
+        <div class="f-logo">
+          <svg viewBox="0 0 196 150" fill="none" aria-hidden="true" style="height:38px">
+            <g stroke="#ffffff" stroke-width="3.4" stroke-linejoin="round" stroke-linecap="round">
+              <path d="M14 138 V92 L52 79"/><path d="M52 138 V40 L168 70 V138"/>
+              <path d="M14 138 H168"/><path d="M52 96 H168"/><path d="M100 138 V96"/>
+            </g>
+          </svg>
+          <span style="font-family:'Montserrat';font-weight:800;font-size:13px;letter-spacing:.14em;line-height:1.15;color:#fff">JT<br>CARPENTRY<br>WA</span>
+        </div>
+        <p>Custom carpentry and quality residential building across Perth &amp; Western Australia.</p>
+      </div>
+      <div class="f-cols">
+        <div class="f-col">
+          <h4>Explore</h4>
+          <a href="#">Home</a><a href="#services">Services</a><a href="#portfolio">Projects</a><a href="#about">About</a><a href="#contact">Contact</a>
+        </div>
+        <div class="f-col">
+          <h4>Services</h4>
+          <a href="#services">New Homes</a><a href="#services">Extensions</a><a href="#services">Decking &amp; Outdoor</a><a href="#services">Cladding</a><a href="#services">Renovations</a>
+        </div>
+        <div class="f-col">
+          <h4>Connect</h4>
+          <a href="https://www.instagram.com/jtcarpentrywa/">Instagram</a><a href="#contact">Request a Quote</a><a href="#">Perth &amp; WA</a>
+        </div>
+      </div>
+    </div>
+    <div class="f-bottom">
+      <div class="wrap">
+        <span>© 2026 JT Carpentry WA. All rights reserved.</span>
+        <span>Licensed &amp; insured · Perth &amp; Western Australia</span>
+      </div>
+    </div>
+  </footer>
 
 </div>
 
@@ -219,5 +433,18 @@
     <svg viewBox="0 0 24 24"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
   </a>
 </div>
+
+<script>
+(function(){
+  var els = [].slice.call(document.querySelectorAll('.reveal'));
+  if(!('IntersectionObserver' in window)){ els.forEach(function(e){e.classList.add('in')}); return; }
+  var io = new IntersectionObserver(function(entries){
+    entries.forEach(function(en){
+      if(en.isIntersecting){ en.target.classList.add('in'); io.unobserve(en.target); }
+    });
+  }, { threshold: 0.14, rootMargin: '0px 0px -8% 0px' });
+  els.forEach(function(e){ io.observe(e); });
+})();
+</script>
 </body>
 </html>
