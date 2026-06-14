@@ -49,19 +49,28 @@
   @media (hover:hover) and (pointer:fine){ .has-cursor, .has-cursor a, .has-cursor button, .has-cursor .magnetic{cursor:none} }
 
   /* ---------- Glass sticky nav ---------- */
-  .snav{position:fixed;top:0;left:0;right:0;z-index:50;height:70px;display:flex;align-items:center;
-    gap:24px;padding:0 clamp(20px,4vw,48px);
-    background:rgba(255,255,255,.72);backdrop-filter:blur(16px) saturate(150%);-webkit-backdrop-filter:blur(16px) saturate(150%);
-    border-bottom:1px solid rgba(20,21,23,.07);transform:translateY(-101%);transition:transform .55s var(--ease)}
+  .snav{position:fixed;top:0;left:0;right:0;z-index:50;height:84px;display:flex;align-items:center;
+    gap:28px;padding:0 clamp(20px,4vw,52px);
+    background:rgba(255,255,255,.68);backdrop-filter:blur(20px) saturate(160%);-webkit-backdrop-filter:blur(20px) saturate(160%);
+    border-bottom:1px solid rgba(20,21,23,.05);transform:translateY(-101%);
+    transition:transform .6s var(--ease),height .45s var(--ease),background .45s,box-shadow .45s,border-color .45s}
   .snav.show{transform:none}
-  .snav .sn-logo{display:flex;align-items:center;gap:11px}
-  .snav .sn-logo svg{height:30px;width:auto}
+  .snav.compact{height:62px;background:rgba(255,255,255,.82);box-shadow:0 14px 40px -20px rgba(20,21,23,.34);border-color:rgba(20,21,23,.08)}
+  .snav .sn-logo{display:flex;align-items:center;gap:12px}
+  .snav .sn-logo svg{height:34px;width:auto;transition:height .45s var(--ease)}
+  .snav.compact .sn-logo svg{height:27px}
   .snav .sn-logo span{font-weight:800;font-size:12px;letter-spacing:.14em;line-height:1.05;color:var(--ink)}
-  .snav .sn-menu{display:flex;gap:30px;margin:0 auto}
-  .snav .sn-menu a{font-size:13px;font-weight:600;letter-spacing:.02em;color:var(--slate);transition:color .15s}
+  .snav .sn-menu{display:flex;gap:36px;margin:0 auto}
+  .snav .sn-menu a{position:relative;font-size:13px;font-weight:600;letter-spacing:.05em;color:var(--slate);padding:7px 0;transition:color .18s}
+  .snav .sn-menu a::after{content:"";position:absolute;left:0;right:100%;bottom:0;height:1.5px;background:var(--ink);transition:right .32s var(--ease)}
   .snav .sn-menu a:hover{color:var(--ink)}
-  .sn-cta{background:var(--ink);color:#fff;height:42px;padding:0 22px;font-size:12.5px;letter-spacing:.04em;text-transform:uppercase}
-  .sn-cta:hover{background:#000;transform:translateY(-1px)}
+  .snav .sn-menu a:hover::after{right:0}
+  .sn-cta{background:var(--ink);color:#fff;height:46px;padding:0 10px 0 24px;gap:14px;font-size:11.5px;letter-spacing:.1em;text-transform:uppercase;font-weight:800}
+  .sn-cta .ic{width:30px;height:30px;background:rgba(255,255,255,.16);display:flex;align-items:center;justify-content:center;transition:background .25s,transform .3s var(--ease)}
+  .sn-cta svg{width:13px;height:13px;stroke:#fff;stroke-width:2.4;fill:none;transition:transform .22s}
+  .sn-cta:hover{background:#000;transform:translateY(-2px);box-shadow:0 16px 30px -14px rgba(20,21,23,.5)}
+  .sn-cta:hover .ic{background:rgba(255,255,255,.3);transform:scale(1.08)}
+  .sn-cta:hover svg{transform:translateX(2px)}
 
   /* ---------- Hero ---------- */
   .hero{padding:24px 24px 24px}
@@ -82,10 +91,11 @@
   .nav-meta{display:flex;align-items:center;gap:8px;color:rgba(255,255,255,.7);font-size:12.5px;font-weight:500;letter-spacing:.04em}
   .nav-meta svg{width:14px;height:14px;stroke:rgba(255,255,255,.72);stroke-width:1.8;fill:none}
   .nav-div{width:1px;height:24px;background:rgba(255,255,255,.22)}
-  .nav-cta{background:#fff;color:var(--ink);font-size:13px;height:48px;padding:0 8px 0 22px;gap:14px;font-weight:700}
-  .nav-cta .ic{width:32px;height:32px;background:var(--ink);display:flex;align-items:center;justify-content:center;transition:background .2s}
+  .nav-cta{background:#fff;color:var(--ink);font-size:12px;letter-spacing:.09em;text-transform:uppercase;height:50px;padding:0 9px 0 24px;gap:16px;font-weight:800}
+  .nav-cta .ic{width:34px;height:34px;background:var(--ink);display:flex;align-items:center;justify-content:center;transition:background .25s,transform .3s var(--ease)}
   .nav-cta svg{width:15px;height:15px;stroke:#fff;stroke-width:2;fill:none;transition:transform .22s}
-  .nav-cta:hover{transform:translateY(-2px)}.nav-cta:hover svg{transform:translateX(2px)}
+  .nav-cta:hover{transform:translateY(-2px);box-shadow:0 18px 34px -14px rgba(0,0,0,.5)}
+  .nav-cta:hover .ic{transform:scale(1.09)}.nav-cta:hover svg{transform:translateX(2px)}
   .hamburger{display:none;width:48px;height:48px;border:1.5px solid rgba(255,255,255,.5);background:rgba(255,255,255,.06);align-items:center;justify-content:center;cursor:pointer;flex-shrink:0;margin-left:auto}
   .hamburger svg{width:22px;height:22px;stroke:#fff;stroke-width:2;fill:none}
   .brandhero{position:absolute;inset:0;z-index:3;display:flex;align-items:center;justify-content:center;padding:96px 24px 0}
@@ -229,7 +239,7 @@
   <div class="sn-menu">
     <a href="#services">Services</a><a href="#portfolio">Projects</a><a href="#about">About</a><a href="#contact">Contact</a>
   </div>
-  <a href="#contact" class="btn sn-cta magnetic">Start Your Project</a>
+  <a href="#contact" class="btn sn-cta magnetic">Start Your Project <span class="ic"><svg viewBox="0 0 24 24"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span></a>
 </nav>
 
 <div class="site">
@@ -363,7 +373,9 @@
 
   /* Sticky glass nav after hero */
   var snav=document.getElementById('snav'), hero=document.querySelector('.hero');
-  function navCheck(){ if(window.scrollY > hero.offsetHeight - 90) snav.classList.add('show'); else snav.classList.remove('show'); }
+  function navCheck(){ var y=window.scrollY, h=hero.offsetHeight;
+    snav.classList.toggle('show', y > h - 100);
+    snav.classList.toggle('compact', y > h + 220); }
   window.addEventListener('scroll', navCheck, {passive:true}); navCheck();
 
   /* Scroll parallax */
