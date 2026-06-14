@@ -110,12 +110,22 @@
   .svc-grid{margin-top:clamp(40px,4vw,56px);display:grid;grid-template-columns:repeat(3,1fr);
     border-top:1px solid var(--hair);border-left:1px solid var(--hair)}
   .svc{border-right:1px solid var(--hair);border-bottom:1px solid var(--hair);
-    padding:36px 34px 42px;position:relative;transition:background .25s}
-  .svc:hover{background:var(--paper)}
-  .svc-ic svg{width:30px;height:30px;stroke:var(--ink);stroke-width:1.5;fill:none;margin-bottom:22px}
-  .svc-n{position:absolute;top:34px;right:32px;font-family:'Montserrat';font-weight:800;font-size:12px;color:var(--hair-2);letter-spacing:.06em}
-  .svc h3{font-family:'Montserrat',sans-serif;font-weight:800;font-size:16.5px;letter-spacing:-.01em;color:var(--ink);margin-bottom:10px}
-  .svc p{font-size:13.5px;line-height:1.56;color:var(--slate-2)}
+    padding:36px 34px 42px;position:relative;overflow:hidden;min-height:230px}
+  .svc-bg{position:absolute;inset:0;background-size:cover;background-position:center;opacity:0;
+    transform:scale(1.09);transition:opacity .55s ease,transform 1s cubic-bezier(.16,1,.3,1);z-index:0;pointer-events:none}
+  .svc-scrim{position:absolute;inset:0;background:linear-gradient(180deg,rgba(14,16,18,.40),rgba(14,16,18,.78));
+    opacity:0;transition:opacity .55s ease;z-index:1;pointer-events:none}
+  .svc-ic,.svc-n,.svc h3,.svc p{position:relative;z-index:2}
+  .svc-ic svg{width:30px;height:30px;stroke:var(--ink);stroke-width:1.5;fill:none;margin-bottom:22px;transition:stroke .4s}
+  .svc-n{position:absolute;top:34px;right:32px;font-family:'Montserrat';font-weight:800;font-size:12px;color:var(--hair-2);letter-spacing:.06em;transition:color .4s}
+  .svc h3{font-family:'Montserrat',sans-serif;font-weight:800;font-size:16.5px;letter-spacing:-.01em;color:var(--ink);margin-bottom:10px;transition:color .4s}
+  .svc p{font-size:13.5px;line-height:1.56;color:var(--slate-2);transition:color .4s}
+  .svc:hover .svc-bg{opacity:1;transform:scale(1)}
+  .svc:hover .svc-scrim{opacity:1}
+  .svc:hover h3{color:#fff}
+  .svc:hover p{color:rgba(255,255,255,.88)}
+  .svc:hover .svc-ic svg{stroke:#fff}
+  .svc:hover .svc-n{color:rgba(255,255,255,.7)}
 
   /* ---------- About / Why ---------- */
   .about{background:var(--paper);padding:clamp(64px,7vw,104px) 0}
@@ -287,36 +297,42 @@
       </div>
       <div class="svc-grid">
         <div class="svc reveal" style="--i:0">
+          <span class="svc-bg" style="background-image:url(assets/svc-1.jpg)"></span><span class="svc-scrim"></span>
           <div class="svc-ic"><svg viewBox="0 0 24 24"><path d="M3 11 12 4l9 7M5 9.5V20h14V9.5M9.5 20v-6h5v6"/></svg></div>
           <span class="svc-n">01</span>
           <h3>New Homes</h3>
           <p>Custom new builds crafted from the ground up, framed and finished to the highest standard.</p>
         </div>
         <div class="svc reveal" style="--i:1">
+          <span class="svc-bg" style="background-image:url(assets/svc-2.jpg)"></span><span class="svc-scrim"></span>
           <div class="svc-ic"><svg viewBox="0 0 24 24"><path d="M3 7l9-4 9 4-9 4-9-4ZM3 12l9 4 9-4M3 17l9 4 9-4"/></svg></div>
           <span class="svc-n">02</span>
           <h3>Extensions &amp; Additions</h3>
           <p>Second storeys, room additions and reconfigurations that grow with your family.</p>
         </div>
         <div class="svc reveal" style="--i:2">
+          <span class="svc-bg" style="background-image:url(assets/svc-3.jpg)"></span><span class="svc-scrim"></span>
           <div class="svc-ic"><svg viewBox="0 0 24 24"><path d="M3 8h18M3 12h18M3 16h18M7 8v8M12 8v8M17 8v8"/></svg></div>
           <span class="svc-n">03</span>
           <h3>Decking &amp; Outdoor</h3>
           <p>Timber decks, alfresco areas and pergolas built for the way we live in WA.</p>
         </div>
         <div class="svc reveal" style="--i:3">
+          <span class="svc-bg" style="background-image:url(assets/svc-4.jpg)"></span><span class="svc-scrim"></span>
           <div class="svc-ic"><svg viewBox="0 0 24 24"><path d="M4 4h16v16H4zM8 4v16M12 4v16M16 4v16"/></svg></div>
           <span class="svc-n">04</span>
           <h3>Cladding &amp; Facades</h3>
           <p>Timber and composite cladding that transforms the look and feel of any home.</p>
         </div>
         <div class="svc reveal" style="--i:4">
+          <span class="svc-bg" style="background-image:url(assets/svc-5.jpg)"></span><span class="svc-scrim"></span>
           <div class="svc-ic"><svg viewBox="0 0 24 24"><path d="M5 3h14v18H5zM5 12h14M9.5 7.5h0M9.5 16.5h0"/></svg></div>
           <span class="svc-n">05</span>
           <h3>Bespoke Joinery &amp; Fit-Outs</h3>
           <p>Built-in cabinetry, custom carpentry and fine interior finishing work.</p>
         </div>
         <div class="svc reveal" style="--i:5">
+          <span class="svc-bg" style="background-image:url(assets/svc-6.jpg)"></span><span class="svc-scrim"></span>
           <div class="svc-ic"><svg viewBox="0 0 24 24"><path d="M14.5 5.5a3.5 3.5 0 0 0-4.8 4.3l-6 6a1.7 1.7 0 0 0 2.4 2.4l6-6a3.5 3.5 0 0 0 4.3-4.8l-2.2 2.2-1.9-.4-.4-1.9z"/></svg></div>
           <span class="svc-n">06</span>
           <h3>Renovations &amp; Repairs</h3>
